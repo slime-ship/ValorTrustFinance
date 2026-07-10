@@ -1,0 +1,30 @@
+[33m0861c29[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m Initial commit: ValorTrustFinance project
+[33mdfd1f27[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m save
+[33m4f0d6ff[m save
+[33m7e0ffcf[m save
+[33mac0efc2[m save
+[33m416b81d[m save
+[33m1dbb9f7[m Update settings.py
+[33mfafd320[m Create fly-deploy.yml
+[33mee974f0[m Update fly.toml
+[33m466a786[m Create fly.toml
+[33m3b57aa2[m Update Dockerfile
+[33mcaa4d7b[m Delete fly.toml
+[33m23e5e8e[m save
+[33m429bf1a[m Fix: remove mise from Dockerfile and update config
+[33me8ddba1[m Fix: correct requirements.txt path in Dockerfile
+[33mf4f716e[m Resolved Dockerfile merge conflict
+[33m50add06[m Merge remote-tracking branch 'origin/main'
+[33m99c2ee6[m save
+[33m7f3836e[m Update Dockerfile
+[33me2e2d91[m Update Dockerfile
+[33m25ea7c1[m Update Dockerfile
+[33mbb41522[m Update Dockerfile
+[33mbcffdb2[m Update Dockerfile
+[33m403e1fb[m Update Dockerfile
+[33meb143e4[m Update Dockerfile
+[33m94e8fc9[m Update Dockerfile
+[33mde01fb3[m Update Dockerfile
+[33mc7d19af[m Delete fly.toml
+[33m1f2670b[m save up
+[33md773f92[m Initial commit

