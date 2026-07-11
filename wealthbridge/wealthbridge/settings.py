@@ -17,6 +17,11 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+
 cloudinary.config(
     cloud_name="dlzn0moho",
     api_key="563396395915366",
@@ -32,9 +37,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',   # if BASE_DIR is defined (should be)
     }
 } 
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -164,10 +166,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 if not DEBUG:
     # Use WhiteNoise storage for production
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-
-
-MEDIA_URL = '/media/'
 
 # Additional locations of static files
 STATICFILES_DIRS = [
