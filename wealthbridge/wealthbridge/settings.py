@@ -24,8 +24,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 cloudinary.config(
     cloud_name="dlzn0moho",
-    api_key="563396395915366",
-    api_secret="pCSSrLNvxfFSEzY4ZnaOiF5u93o"
+    api_key="234362871361543",
+    api_secret="dfj1aN6O2WYmlYNSZF8ImSNgxYE"
 )
 
 
@@ -57,8 +57,8 @@ ALLOWED_HOSTS=['www.novatrustbank.online']
 
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'dlzn0moho',
-    'API_KEY': '563396395915366',
-    'API_SECRET': 'pCSSrLNvxfFSEzY4ZnaOiF5u93o',
+    'API_KEY': '234362871361543',
+    'API_SECRET': 'dfj1aN6O2WYmlYNSZF8ImSNgxYE',
 }
 
 CSRF_TRUSTED_ORIGINS = [
