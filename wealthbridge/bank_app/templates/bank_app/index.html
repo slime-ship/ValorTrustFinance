@@ -2,512 +2,1092 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- awesone fonts css-->
-    <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet" type="text/css">
-    <!-- owl carousel css-->
-    <link rel="stylesheet" href="{% static 'owl-carousel/assets/owl.carousel.min.css' %}" type="text/css">
-    <!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/6a09f6a0e57a6a1c342a5445/1jorempt4';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Bootstrap CSS -->
+    <!-- Font Awesome & Owl Carousel -->
+    <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'owl-carousel/assets/owl.carousel.min.css' %}">
+
+    <!-- Tawk.to Script -->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function() {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/6a09f6a0e57a6a1c342a5445/1jorempt4';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+
+    <!-- Bootstrap & Custom CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <!-- custom CSS -->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <title> Nova trust finance</title>
+
+    <title>Nova Trust Finance</title>
+
     <style>
-        .telegram-icon {
+        /* ───────── RESET & BASE ───────── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background: #0b0e1a;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* ───────── ANIMATED BACKGROUND ORBS ───────── */
+        .bg-orbs {
             position: fixed;
-            bottom: 20px;
-            left: 20px;
-            width: 60px;
-            height: 60px;
-            background-color: #0088cc;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .bg-orbs span {
+            position: absolute;
             border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.20;
+            animation: orbFloat 25s ease-in-out infinite alternate;
+        }
+        .bg-orbs .orb1 {
+            width: 700px;
+            height: 700px;
+            background: #2d4bff;
+            top: -300px;
+            left: -300px;
+            animation-duration: 20s;
+        }
+        .bg-orbs .orb2 {
+            width: 600px;
+            height: 600px;
+            background: #00b8d4;
+            bottom: -250px;
+            right: -250px;
+            animation-duration: 26s;
+            animation-delay: 3s;
+        }
+        .bg-orbs .orb3 {
+            width: 400px;
+            height: 400px;
+            background: #7c4dff;
+            top: 40%;
+            left: 50%;
+            animation-duration: 30s;
+            animation-delay: 5s;
+            opacity: 0.12;
+        }
+
+        @keyframes orbFloat {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                transform: translate(100px, -80px) scale(1.15);
+            }
+        }
+
+        /* ───────── GLASS CARD UTILITY ───────── */
+        .glass {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(16px) saturate(1.4);
+            -webkit-backdrop-filter: blur(16px) saturate(1.4);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        /* ───────── NAVBAR ───────── */
+        .navbar-modern {
+            background: rgba(11, 14, 26, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 0.8rem 0;
+            transition: background 0.3s;
+            z-index: 100;
+        }
+        .navbar-modern .navbar-brand {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #fff;
+            letter-spacing: -0.02em;
+        }
+        .navbar-modern .navbar-brand span {
+            background: linear-gradient(135deg, #4a6cf7, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .navbar-modern .nav-link {
+            color: rgba(255, 255, 255, 0.6) !important;
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem !important;
+            transition: color 0.3s;
+        }
+        .navbar-modern .nav-link:hover {
+            color: #fff !important;
+        }
+        .navbar-modern .btn-outline-light {
+            border-color: rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.7);
+            border-radius: 40px;
+            padding: 0.4rem 1.2rem;
+            transition: all 0.3s;
+        }
+        .navbar-modern .btn-outline-light:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+        }
+        .navbar-modern .btn-info {
+            background: linear-gradient(135deg, #4a6cf7, #3b5de7);
+            border: none;
+            border-radius: 40px;
+            padding: 0.4rem 1.5rem;
+            color: #fff;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 6px 20px rgba(74, 108, 247, 0.25);
+        }
+        .navbar-modern .btn-info:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(74, 108, 247, 0.35);
+        }
+
+        /* ───────── HERO ───────── */
+        .hero-section {
+            position: relative;
+            z-index: 1;
+            padding: 5rem 0 4rem;
+        }
+        .hero-section h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #fff;
+        }
+        .hero-section h1 span {
+            background: linear-gradient(135deg, #4a6cf7, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-section p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin: 1.5rem 0 2rem;
+        }
+        .hero-section .btn-hero {
+            background: linear-gradient(135deg, #4a6cf7, #3b5de7);
+            border: none;
+            border-radius: 40px;
+            padding: 0.8rem 2.2rem;
+            color: #fff;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+            box-shadow: 0 8px 30px rgba(74, 108, 247, 0.3);
+            display: inline-block;
+        }
+        .hero-section .btn-hero:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(74, 108, 247, 0.45);
+            color: #fff;
+            text-decoration: none;
+        }
+        .hero-section .card-img {
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .hero-section .card-img img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* ───────── FEATURE (About) ───────── */
+        .feature-section {
+            position: relative;
+            z-index: 1;
+            padding: 4rem 0;
+        }
+        .feature-section h2 {
+            font-weight: 700;
+            font-size: 2.4rem;
+            margin-bottom: 1.5rem;
+        }
+        .feature-section p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+        .feature-section .btn-link {
+            color: #4a6cf7;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .feature-section .btn-link:hover {
+            color: #00d4ff;
+            text-decoration: none;
+        }
+        .feature-section .cover .card {
+            background: transparent;
+            border: none;
+            border-radius: 24px;
+            overflow: hidden;
+        }
+        .feature-section .cover .card svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* ───────── SERVICES CARDS ───────── */
+        .services-section {
+            position: relative;
+            z-index: 1;
+            padding: 4rem 0;
+        }
+        .services-section .section-title {
+            font-weight: 700;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+        .services-section .section-desc {
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 2rem;
+        }
+        .services-section .service-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        .services-section .service-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(74, 108, 247, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        .services-section .service-card .oval {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 1rem;
+            border-radius: 50%;
+            background: rgba(74, 108, 247, 0.12);
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-            cursor: pointer;
-            animation: bounce 2s infinite;
-            transition: transform 0.3s;
+            padding: 15px;
+        }
+        .services-section .service-card .oval img {
+            width: 100%;
+            height: auto;
+            filter: brightness(0) invert(1) opacity(0.8);
+        }
+        .services-section .service-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .services-section .service-card p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            margin: 0;
         }
 
-        .telegram-icon:hover {
-            transform: scale(1.1);
+        /* ───────── NUMBERS BLOCK ───────── */
+        .numbers-section {
+            position: relative;
+            z-index: 1;
+            padding: 4rem 0;
+        }
+        .numbers-section .number-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem 1rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .numbers-section .number-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: scale(1.02);
+        }
+        .numbers-section .number-card h5 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #4a6cf7, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.2rem;
+        }
+        .numbers-section .number-card p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
+        /* ───────── TESTIMONIALS ───────── */
+        .testimonials-section {
+            position: relative;
+            z-index: 1;
+            padding: 4rem 0;
+        }
+        .testimonials-section h2 {
+            font-weight: 700;
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .testimonials-section .testimonial-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .testimonials-section .testimonial-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-5px);
+        }
+        .testimonials-section .testimonial-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            border: 3px solid rgba(74, 108, 247, 0.3);
+        }
+        .testimonials-section .testimonial-card h5 {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .testimonials-section .testimonial-card h5 span {
+            color: rgba(255, 255, 255, 0.4);
+            font-weight: 400;
+            font-size: 0.85rem;
+            display: block;
+        }
+        .testimonials-section .testimonial-card p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+        }
+
+        /* ───────── FEATURES LIST ───────── */
+        .features-list-section {
+            position: relative;
+            z-index: 1;
+            padding: 3rem 0;
+        }
+        .features-list-section .media {
+            margin-bottom: 2rem;
+        }
+        .features-list-section .oval {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(74, 108, 247, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            padding: 12px;
+        }
+        .features-list-section .oval img {
+            width: 100%;
+            filter: brightness(0) invert(1) opacity(0.7);
+        }
+        .features-list-section .media-body h5 {
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+        .features-list-section .media-body {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* ───────── LOGOS ───────── */
+        .logos-section {
+            position: relative;
+            z-index: 1;
+            padding: 3rem 0;
+        }
+        .logos-section .logo-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.4;
+            transition: opacity 0.3s;
+            filter: grayscale(1);
+        }
+        .logos-section .logo-item:hover {
+            opacity: 0.8;
+            filter: grayscale(0);
+        }
+        .logos-section .logo-item img {
+            max-height: 60px;
+            width: auto;
+        }
+
+        /* ───────── NEWS ───────── */
+        .news-section {
+            position: relative;
+            z-index: 1;
+            padding: 4rem 0;
+        }
+        .news-section h2 {
+            font-weight: 700;
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .news-section .news-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        .news-section .news-card:hover {
+            transform: translateY(-6px);
+            background: rgba(255, 255, 255, 0.06);
+        }
+        .news-section .news-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .news-section .news-card .card-body {
+            padding: 1.5rem;
+        }
+        .news-section .news-card h5 {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        .news-section .news-card p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+        .news-section .news-card a {
+            color: #4a6cf7;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .news-section .news-card a:hover {
+            color: #00d4ff;
+        }
+
+        /* ───────── FOOTER ───────── */
+        .footer-section {
+            position: relative;
+            z-index: 1;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 3rem 0 2rem;
+            margin-top: 2rem;
+        }
+        .footer-section h4 {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
+            color: #fff;
+        }
+        .footer-section .form-control {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 40px;
+            color: #fff;
+            padding: 0.7rem 1.2rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        .footer-section .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.2);
+        }
+        .footer-section .form-control:focus {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(74, 108, 247, 0.3);
+            box-shadow: none;
+        }
+        .footer-section .submit-button {
+            background: linear-gradient(135deg, #4a6cf7, #3b5de7);
+            border: none;
+            border-radius: 40px;
+            padding: 0.7rem 2rem;
+            color: #fff;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        .footer-section .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(74, 108, 247, 0.3);
+            color: #fff;
+            text-decoration: none;
+        }
+        .footer-section .nav-link {
+            color: rgba(255, 255, 255, 0.4) !important;
+            padding: 0.2rem 0 !important;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        .footer-section .nav-link:hover {
+            color: #fff !important;
+        }
+        .footer-section .follow-us-nav .nav-link {
+            font-size: 1.2rem;
+            padding: 0.2rem 0.6rem !important;
+        }
+        .footer-section .copy {
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 0.8rem;
+            margin-top: 1.5rem;
+        }
+        .footer-section .copy a {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* ───────── TELEGRAM FLOATING BUTTON ───────── */
+        .telegram-float {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            z-index: 999;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0088cc, #006699);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            box-shadow: 0 8px 32px rgba(0, 136, 204, 0.35);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            text-decoration: none;
+            animation: telegramBounce 2.5s infinite;
+        }
+        .telegram-float:hover {
+            transform: scale(1.1) translateY(-3px);
+            color: #fff;
+        }
+        @keyframes telegramBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* ───────── RESPONSIVE ───────── */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.2rem;
             }
-            50% {
-                transform: translateY(-10px);
+            .hero-section .card-img {
+                margin-top: 2rem;
+            }
+            .services-section .service-card {
+                margin-bottom: 1.5rem;
+            }
+            .numbers-section .number-card {
+                margin-bottom: 1.5rem;
+            }
+            .footer-section .col-6 {
+                margin-bottom: 1.5rem;
             }
         }
 
-        .telegram-icon img {
-            width: 35px;
-            height: 35px;
+        /* ───────── ANIMATIONS ───────── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
+
 <body>
-    <div class="telegram-icon" id="telegramBtn">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+
+    <!-- ─── BACKGROUND ORBS ─── -->
+    <div class="bg-orbs">
+        <span class="orb1"></span>
+        <span class="orb2"></span>
+        <span class="orb3"></span>
     </div>
-<nav class="navbar navbar-expand-lg navbar-light bg-light bg-transparent" id="gtco-main-nav">
-    <div class="container"><a class="navbar-brand"> Nova trust finance</a>
-        <button class="navbar-toggler" data-target="#my-nav" onclick="myFunction(this)" data-toggle="collapse"><span
-                class="bar1"></span> <span class="bar2"></span> <span class="bar3"></span></button>
-        <div id="my-nav" class="collapse navbar-collapse">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="#news">News</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <a href="{% url 'reg' %}" class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">login</a> <a href="{% url 'reg' %}"
-                                                                                                       class="btn btn-info my-2 my-sm-0 text-uppercase">sign
-                up</a>
-            </form>
-        </div>
-    </div>
-</nav>
-<div class="container-fluid gtco-banner-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <h1> Your Financial Future,
-                    Our <span>Priority</span>. </h1>
-                <p> Experience secure, innovative, and convenient banking solutions tailored for you. Manage your finances with ease and confidence. </p>
-                <a href="{% url 'reg' %}">Open an Account Today <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-            </div>
-            <div class="col-md-6">
-                <div class="card"><img class="card-img-top img-fluid" src="{% static 'images/banner-img.png' %}" alt="Banking Solutions"></div>
+
+    <!-- ─── TELEGRAM FLOAT ─── -->
+    <a href="https://t.me/CUSTOMER_SUPPORT_1485" class="telegram-float" target="_blank">
+        <i class="fab fa-telegram"></i>
+    </a>
+
+    <!-- ─── NAVBAR ─── -->
+    <nav class="navbar navbar-expand-lg navbar-modern fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Nova <span>Trust</span> Finance</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#news">News</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <a href="{% url 'reg' %}" class="btn btn-outline-light my-2 my-sm-0 mr-2">Login</a>
+                    <a href="{% url 'reg' %}" class="btn btn-info my-2 my-sm-0">Sign Up</a>
+                </form>
             </div>
         </div>
-    </div>
-</div>
+    </nav>
 
-<div class="container-fluid gtco-feature" id="services">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-7">
-                <div class="cover">
-                    <div class="card">
-                        <svg
-                                class="back-bg"
-                                width="100%" viewBox="0 0 900 700" style="position:absolute; z-index: -1">
-                            <defs>
-                                <linearGradient id="PSgrad_01" x1="64.279%" x2="0%" y1="76.604%" y2="0%">
-                                    <stop offset="0%" stop-color="rgb(1,230,248)" stop-opacity="1"/>
-                                    <stop offset="100%" stop-color="rgb(29,62,222)" stop-opacity="1"/>
-                                </linearGradient>
-                            </defs>
-                            <path fill-rule="evenodd" opacity="0.102" fill="url(#PSgrad_01)"
-                                  d="M616.656,2.494 L89.351,98.948 C19.867,111.658 -16.508,176.639 7.408,240.130 L122.755,546.348 C141.761,596.806 203.597,623.407 259.843,609.597 L697.535,502.126 C748.221,489.680 783.967,441.432 777.751,392.742 L739.837,95.775 C732.096,35.145 677.715,-8.675 616.656,2.494 Z"/>
-                        </svg>
-                        <!-- *************-->
-
-                        <svg width="100%" viewBox="0 0 700 500">
-                            <clipPath id="clip-path">
-                                <path d="M89.479,0.180 L512.635,25.932 C568.395,29.326 603.115,76.927 590.357,129.078 L528.827,380.603 C518.688,422.048 472.661,448.814 427.190,443.300 L73.350,400.391 C32.374,395.422 -0.267,360.907 -0.002,322.064 L1.609,85.154 C1.938,36.786 40.481,-2.801 89.479,0.180 Z"></path>
-                            </clipPath>
-                            <!-- xlink:href for modern browsers, src for IE8- -->
-                            <image clip-path="url(#clip-path)" xlink:href="{% static 'images/learn-img.jpg' %}" width="100%"
-                                   height="465" class="svg__image"></image>
-                        </svg>
+    <!-- ─── HERO ─── -->
+    <section class="hero-section" style="padding-top: 7rem;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 fade-up">
+                    <h1>Your Financial Future,<br><span>Our Priority</span>.</h1>
+                    <p>Experience secure, innovative, and convenient banking solutions tailored for you. Manage your finances with ease and confidence.</p>
+                    <a href="{% url 'reg' %}" class="btn-hero">Open an Account Today <i class="fa fa-angle-right ml-2"></i></a>
+                </div>
+                <div class="col-md-6 fade-up">
+                    <div class="card-img">
+                        <img src="{% static 'images/banner-img.png' %}" alt="Banking Solutions" class="img-fluid">
                     </div>
                 </div>
             </div>
-            <div class="col-md-5">
-                <h2> Empowering You with
-                    Modern Banking Solutions </h2>
-                <p> At Valor trust finance, we are committed to offering secure, reliable, and innovative financial services designed to meet your unique needs. </p>
-                <p>
-                    <small>Manage your savings, investments, and daily transactions effortlessly with our state-of-the-art online and mobile banking platforms. Your financial well-being is our priority.
-                    </small>
-                </p>
-                <a href="{% url 'reg' %}">Discover More <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-            </div>
+        </div>
+    </section>
 
-</div>
-<div class="container-fluid gtco-features" id="about">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4">
-                <h2> Discover The Banking<br/>
-                    Services We Provide </h2>
-                <p> We offer a wide range of financial services designed to make managing your money simple and secure. From savings accounts to investment tools, we have you covered. </p>
-                <a href="#">Explore All Services <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-            </div>
-            <div class="col-lg-8">
-                <svg id="bg-services"
-                     width="100%"
-                     viewBox="0 0 1000 800">
-                    <defs>
-                        <linearGradient id="PSgrad_02" x1="64.279%" x2="0%" y1="76.604%" y2="0%">
-                            <stop offset="0%" stop-color="rgb(1,230,248)" stop-opacity="1"/>
-                            <stop offset="100%" stop-color="rgb(29,62,222)" stop-opacity="1"/>
-                        </linearGradient>
-                    </defs>
-                    <path fill-rule="evenodd" opacity="0.102" fill="url(#PSgrad_02)"
-                          d="M801.878,3.146 L116.381,128.537 C26.052,145.060 -21.235,229.535 9.856,312.073 L159.806,710.157 C184.515,775.753 264.901,810.334 338.020,792.380 L907.021,652.668 C972.912,636.489 1019.383,573.766 1011.301,510.470 L962.013,124.412 C951.950,45.594 881.254,-11.373 801.878,3.146 Z"/>
-                </svg>
-                <div class="row">
-                    <div class="col">
-                        <div class="card text-center">
-                            <div class="oval"><img class="card-img-top" src="{% static 'images/web-design.png' %}" alt=""></div>
-                            <div class="card-body">
-                                <h3 class="card-title">Savings Accounts</h3>
-                                <p class="card-text">Grow your wealth with competitive interest rates and secure savings solutions.</p>
-                            </div>
-                        </div>
-                        <div class="card text-center">
-                            <div class="oval"><img class="card-img-top" src="{% static 'images/easy-to-use.png' %}" alt=""></div>
-                            <div class="card-body">
-                                <h3 class="card-title">Loans</h3>
-                                <p class="card-text">Get fast, reliable financing for personal or business needs at great rates.</p>
-                            </div>
+    <!-- ─── FEATURE / ABOUT ─── -->
+    <section class="feature-section" id="about">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-7 fade-up">
+                    <div class="cover">
+                        <div class="card">
+                            <svg width="100%" viewBox="0 0 900 700" style="position:absolute; z-index:-1;">
+                                <defs>
+                                    <linearGradient id="grad1" x1="64.279%" x2="0%" y1="76.604%" y2="0%">
+                                        <stop offset="0%" stop-color="rgb(1,230,248)" stop-opacity="0.15"/>
+                                        <stop offset="100%" stop-color="rgb(29,62,222)" stop-opacity="0.15"/>
+                                    </linearGradient>
+                                </defs>
+                                <path fill="url(#grad1)" d="M616.656,2.494 L89.351,98.948 C19.867,111.658 -16.508,176.639 7.408,240.130 L122.755,546.348 C141.761,596.806 203.597,623.407 259.843,609.597 L697.535,502.126 C748.221,489.680 783.967,441.432 777.751,392.742 L739.837,95.775 C732.096,35.145 677.715,-8.675 616.656,2.494 Z"/>
+                            </svg>
+                            <svg width="100%" viewBox="0 0 700 500">
+                                <clipPath id="clip1">
+                                    <path d="M89.479,0.180 L512.635,25.932 C568.395,29.326 603.115,76.927 590.357,129.078 L528.827,380.603 C518.688,422.048 472.661,448.814 427.190,443.300 L73.350,400.391 C32.374,395.422 -0.267,360.907 -0.002,322.064 L1.609,85.154 C1.938,36.786 40.481,-2.801 89.479,0.180 Z"/>
+                                </clipPath>
+                                <image clip-path="url(#clip1)" xlink:href="{% static 'images/learn-img.jpg' %}" width="100%" height="465"></image>
+                            </svg>
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="card text-center">
-                            <div class="oval"><img class="card-img-top" src="{% static 'images/analytics.png' %}" alt=""></div>
-                            <div class="card-body">
-                                <h3 class="card-title">Investment Tools</h3>
-                                <p class="card-text">Plan your financial future with tailored investment options.</p>
+                </div>
+                <div class="col-md-5 fade-up">
+                    <h2>Empowering You with Modern Banking Solutions</h2>
+                    <p>At Nova Trust Finance, we are committed to offering secure, reliable, and innovative financial services designed to meet your unique needs.</p>
+                    <p><small>Manage your savings, investments, and daily transactions effortlessly with our state-of-the-art online and mobile banking platforms. Your financial well-being is our priority.</small></p>
+                    <a href="{% url 'reg' %}" class="btn-link">Discover More <i class="fa fa-angle-right ml-1"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── SERVICES ─── -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 fade-up">
+                    <h2 class="section-title">Discover The Banking Services We Provide</h2>
+                    <p class="section-desc">We offer a wide range of financial services designed to make managing your money simple and secure. From savings accounts to investment tools, we have you covered.</p>
+                    <a href="#" class="btn-link">Explore All Services <i class="fa fa-angle-right ml-1"></i></a>
+                </div>
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-sm-6 mb-4 fade-up">
+                            <div class="service-card">
+                                <div class="oval"><img src="{% static 'images/web-design.png' %}" alt="Savings"></div>
+                                <h3>Savings Accounts</h3>
+                                <p>Grow your wealth with competitive interest rates and secure savings solutions.</p>
                             </div>
                         </div>
-                        <div class="card text-center">
-                            <div class="oval"><img class="card-img-top" src="{% static 'images/graphics-design.png' %}" alt=""></div>
-                            <div class="card-body">
-                                <h3 class="card-title">Mobile Banking</h3>
-                                <p class="card-text">Bank on the go with secure, user-friendly mobile banking services.</p>
+                        <div class="col-sm-6 mb-4 fade-up">
+                            <div class="service-card">
+                                <div class="oval"><img src="{% static 'images/easy-to-use.png' %}" alt="Loans"></div>
+                                <h3>Loans</h3>
+                                <p>Get fast, reliable financing for personal or business needs at great rates.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mb-4 fade-up">
+                            <div class="service-card">
+                                <div class="oval"><img src="{% static 'images/analytics.png' %}" alt="Investments"></div>
+                                <h3>Investment Tools</h3>
+                                <p>Plan your financial future with tailored investment options.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mb-4 fade-up">
+                            <div class="service-card">
+                                <div class="oval"><img src="{% static 'images/graphics-design.png' %}" alt="Mobile"></div>
+                                <h3>Mobile Banking</h3>
+                                <p>Bank on the go with secure, user-friendly mobile banking services.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </section>
 
-<div class="container-fluid gtco-numbers-block">
-    <div class="container">
-        <svg width="100%" viewBox="0 0 1600 400">
-            <defs>
-                <linearGradient id="PSgrad_03" x1="80.279%" x2="0%"  y2="0%">
-                    <stop offset="0%" stop-color="rgb(1,230,248)" stop-opacity="1" />
-                    <stop offset="100%" stop-color="rgb(29,62,222)" stop-opacity="1" />
-
-                </linearGradient>
-
-            </defs>
-            <!-- <clipPath id="clip-path3">
-
-                                      </clipPath> -->
-
-            <path fill-rule="evenodd"  fill="url(#PSgrad_03)"
-                  d="M98.891,386.002 L1527.942,380.805 C1581.806,380.610 1599.093,335.367 1570.005,284.353 L1480.254,126.948 C1458.704,89.153 1408.314,59.820 1366.025,57.550 L298.504,0.261 C238.784,-2.944 166.619,25.419 138.312,70.265 L16.944,262.546 C-24.214,327.750 12.103,386.317 98.891,386.002 Z"></path>
-
-            <clipPath id="ctm" fill="none">
-                <path
-                        d="M98.891,386.002 L1527.942,380.805 C1581.806,380.610 1599.093,335.367 1570.005,284.353 L1480.254,126.948 C1458.704,89.153 1408.314,59.820 1366.025,57.550 L298.504,0.261 C238.784,-2.944 166.619,25.419 138.312,70.265 L16.944,262.546 C-24.214,327.750 12.103,386.317 98.891,386.002 Z"></path>
-            </clipPath>
-
-            <!-- xlink:href for modern browsers, src for IE8- -->
-            <image  clip-path="url(#ctm)" xlink:href="{% static 'images/word-map.png' %}" height="800px" width="100%" class="svg__image">
-
-            </image>
-
-        </svg>
-        <div class="row">
-            <div class="col-3">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">125</h5>
-                        <p class="card-text">Active Projects</p>
+    <!-- ─── NUMBERS ─── -->
+    <section class="numbers-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-6 col-md-3 fade-up">
+                    <div class="number-card">
+                        <h5 class="counter" data-target="125">0</h5>
+                        <p>Active Projects</p>
                     </div>
                 </div>
-            </div>
-            <div class="col-3">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">200</h5>
-                        <p class="card-text">Business Growth</p>
+                <div class="col-6 col-md-3 fade-up">
+                    <div class="number-card">
+                        <h5 class="counter" data-target="200">0</h5>
+                        <p>Business Growth</p>
                     </div>
                 </div>
-            </div>
-            <div class="col-3">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">530</h5>
-                        <p class="card-text">Completed Projects</p>
+                <div class="col-6 col-md-3 fade-up">
+                    <div class="number-card">
+                        <h5 class="counter" data-target="530">0</h5>
+                        <p>Completed Projects</p>
                     </div>
                 </div>
-            </div>
-            <div class="col-3">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">941</h5>
-                        <p class="card-text">Happy Clients</p>
+                <div class="col-6 col-md-3 fade-up">
+                    <div class="number-card">
+                        <h5 class="counter" data-target="941">0</h5>
+                        <p>Happy Clients</p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<div class="container-fluid gtco-testimonials">
-    <div class="container">
-        <h2>What Our Customers Say About Us</h2>
-        <div class="owl-carousel owl-carousel1 owl-theme">
-            <div>
-                <div class="card text-center"><img class="card-img-top" src="{% static 'images/customer1.jpg' %}" alt="Customer Review">
-                    <div class="card-body">
-                        <h5>Michael Thompson <br/>
-                            <span>Small Business Owner</span></h5>
-                        <p class="card-text">“Valor trust finance Banking has been a game-changer for my business. The tools they offer make managing finances effortless and secure!”</p>
+    </section>
+
+    <!-- ─── TESTIMONIALS ─── -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="fade-up">What Our Customers Say About Us</h2>
+            <div class="owl-carousel owl-carousel1 owl-theme">
+                <div class="fade-up">
+                    <div class="testimonial-card">
+                        <img src="{% static 'images/customer1.jpg' %}" alt="Customer">
+                        <h5>Michael Thompson <span>Small Business Owner</span></h5>
+                        <p>“Nova Trust Finance has been a game-changer for my business. The tools they offer make managing finances effortless and secure!”</p>
                     </div>
                 </div>
-            </div>
-            <div>
-                <div class="card text-center"><img class="card-img-top" src="{% static 'images/customer2.jpg' %}" alt="Customer Review">
-                    <div class="card-body">
-                        <h5>Sofia Martinez <br/>
-                            <span>Freelance Designer</span></h5>
-                        <p class="card-text">“I love how user-friendly the mobile app is. Transferring money and paying bills has never been easier!”</p>
+                <div class="fade-up">
+                    <div class="testimonial-card">
+                        <img src="{% static 'images/customer2.jpg' %}" alt="Customer">
+                        <h5>Sofia Martinez <span>Freelance Designer</span></h5>
+                        <p>“I love how user-friendly the mobile app is. Transferring money and paying bills has never been easier!”</p>
                     </div>
                 </div>
-            </div>
-            <div>
-                <div class="card text-center"><img class="card-img-top" src="{% static 'images/customer3.jpg' %}" alt="Customer Review">
-                    <div class="card-body">
-                        <h5>James Walker <br/>
-                            <span>Retired Educator</span></h5>
-                        <p class="card-text">“Valor trust finance Banking’s savings plans have helped me achieve my financial goals. The customer support is also top-notch!”</p>
+                <div class="fade-up">
+                    <div class="testimonial-card">
+                        <img src="{% static 'images/customer3.jpg' %}" alt="Customer">
+                        <h5>James Walker <span>Retired Educator</span></h5>
+                        <p>“Nova Trust Finance’s savings plans have helped me achieve my financial goals. The customer support is also top-notch!”</p>
                     </div>
                 </div>
-            </div>
-            <div>
-                <div class="card text-center"><img class="card-img-top" src="{% static 'images/customer4.jpg' %}" alt="Customer Review">
-                    <div class="card-body">
-                        <h5>Emily Carter <br/>
-                            <span>Entrepreneur</span></h5>
-                        <p class="card-text">“The investment tools offered by Valor trust finance Banking are incredibly helpful for planning my future. Highly recommended!”</p>
+                <div class="fade-up">
+                    <div class="testimonial-card">
+                        <img src="{% static 'images/customer4.jpg' %}" alt="Customer">
+                        <h5>Emily Carter <span>Entrepreneur</span></h5>
+                        <p>“The investment tools offered by Nova Trust Finance are incredibly helpful for planning my future. Highly recommended!”</p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<div class="container-fluid gtco-features-list">
-    <div class="container">
-        <div class="row">
-            <div class="media col-md-6 col-lg-4">
-                <div class="oval mr-4"><img class="align-self-start" src="{% static 'images/quality-results.png' %}" alt="Quality Results"></div>
-                <div class="media-body">
-                    <h5 class="mb-0">Top-Notch Security</h5>
-                    Your finances are safe with us. We utilize advanced encryption and fraud detection to protect your accounts at all times.
-                </div>
-            </div>
-            <div class="media col-md-6 col-lg-4">
-                <div class="oval mr-4"><img class="align-self-start" src="{% static 'images/analytics.png' %}" alt="Analytics"></div>
-                <div class="media-body">
-                    <h5 class="mb-0">Personalized Insights</h5>
-                    Get detailed financial insights tailored to your spending habits and savings goals, helping you make smarter decisions.
-                </div>
-            </div>
-            <div class="media col-md-6 col-lg-4">
-                <div class="oval mr-4"><img class="align-self-start" src="{% static 'images/affordable-pricing.png' %}" alt="Affordable Pricing"></div>
-                <div class="media-body">
-                    <h5 class="mb-0">Competitive Rates</h5>
-                    Enjoy some of the best rates in the industry for loans, savings accounts, and investments designed to grow your wealth.
-                </div>
-            </div>
-            <div class="media col-md-6 col-lg-4">
-                <div class="oval mr-4"><img class="align-self-start" src="{% static 'images/easy-to-use.png' %}" alt="Easy to Use"></div>
-                <div class="media-body">
-                    <h5 class="mb-0">User-Friendly App</h5>
-                    Manage your accounts, transfer funds, and pay bills easily with our intuitive and feature-rich mobile app.
-                </div>
-            </div>
-            <div class="media col-md-6 col-lg-4">
-                <div class="oval mr-4"><img class="align-self-start" src="{% static 'images/free-support.png' %}" alt="Free Support"></div>
-                <div class="media-body">
-                    <h5 class="mb-0">24/7 Support</h5>
-                    Our customer service team is available round the clock to assist you with any banking queries or issues.
-                </div>
-            </div>
-            <div class="media col-md-6 col-lg-4">
-                <div class="oval mr-4"><img class="align-self-start" src="{% static 'images/effectively-increase.png' %}" alt="Effectively Increase"></div>
-                <div class="media-body">
-                    <h5 class="mb-0">Reward Programs</h5>
-                    Earn points and rewards for everyday banking activities. Redeem them for exclusive perks and discounts.
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    </section>
 
-<div class="container-fluid gtco-logo-area">
-    <div class="container">
-        <div class="row">
-            <div class="col"><img src="{% static 'images/logo1.png' %}" class="img-fluid" alt=""></div>
-            <div class="col"><img src="{% static 'images/logo2.png' %}" class="img-fluid" alt=""></div>
-            <div class="col"><img src="{% static 'images/logo3.png' %}" class="img-fluid" alt=""></div>
-            <div class="col"><img src="{% static 'images/logo4.png' %}" class="img-fluid" alt=""></div>
-            <div class="col"><img src="{% static 'images/logo5.png' %}" class="img-fluid" alt=""></div>
-        </div>
-    </div>
-</div>
-<div class="container-fluid gtco-news" id="news">
-    <div class="container">
-        <h2>Latest Bank & Stock Market News</h2>
-        <div class="owl-carousel owl-carousel2 owl-theme">
-            <!-- Card 1 -->
-            <div>
-                <div class="card text-center">
-                    <img class="card-img-top" src="{% static 'images/news1.jpg' %}" alt="News 1">
-                    <div class="card-body text-left pr-0 pl-0">
-                        <h5 id="news-title-1">Loading news...</h5>
-                        <p class="card-text" id="news-content-1">Please wait while we fetch the latest updates.</p>
-                        <a href="#" id="news-link-1" target="_blank">READ MORE <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+    <!-- ─── FEATURES LIST ─── -->
+    <section class="features-list-section">
+        <div class="container">
+            <div class="row">
+                <div class="media col-md-6 col-lg-4 fade-up">
+                    <div class="oval mr-3"><img src="{% static 'images/quality-results.png' %}" alt="Security"></div>
+                    <div class="media-body">
+                        <h5>Top-Notch Security</h5>
+                        Your finances are safe with us. We utilize advanced encryption and fraud detection to protect your accounts at all times.
                     </div>
                 </div>
-            </div>
-            <!-- Card 2 -->
-            <div>
-                <div class="card text-center">
-                    <img class="card-img-top" src="{% static 'images/news2.jpg' %}" alt="News 2">
-                    <div class="card-body text-left pr-0 pl-0">
-                        <h5 id="news-title-2">Loading news...</h5>
-                        <p class="card-text" id="news-content-2">Please wait while we fetch the latest updates.</p>
-                        <a href="#" id="news-link-2" target="_blank">READ MORE <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                <div class="media col-md-6 col-lg-4 fade-up">
+                    <div class="oval mr-3"><img src="{% static 'images/analytics.png' %}" alt="Insights"></div>
+                    <div class="media-body">
+                        <h5>Personalized Insights</h5>
+                        Get detailed financial insights tailored to your spending habits and savings goals, helping you make smarter decisions.
                     </div>
                 </div>
-            </div>
-            <!-- Card 3 -->
-            <div>
-                <div class="card text-center">
-                    <img class="card-img-top" src="{% static 'images/news3.jpg' %}" alt="News 3">
-                    <div class="card-body text-left pr-0 pl-0">
-                        <h5 id="news-title-3">Loading news...</h5>
-                        <p class="card-text" id="news-content-3">Please wait while we fetch the latest updates.</p>
-                        <a href="#" id="news-link-3" target="_blank">READ MORE <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                <div class="media col-md-6 col-lg-4 fade-up">
+                    <div class="oval mr-3"><img src="{% static 'images/affordable-pricing.png' %}" alt="Rates"></div>
+                    <div class="media-body">
+                        <h5>Competitive Rates</h5>
+                        Enjoy some of the best rates in the industry for loans, savings accounts, and investments designed to grow your wealth.
+                    </div>
+                </div>
+                <div class="media col-md-6 col-lg-4 fade-up">
+                    <div class="oval mr-3"><img src="{% static 'images/easy-to-use.png' %}" alt="App"></div>
+                    <div class="media-body">
+                        <h5>User-Friendly App</h5>
+                        Manage your accounts, transfer funds, and pay bills easily with our intuitive and feature-rich mobile app.
+                    </div>
+                </div>
+                <div class="media col-md-6 col-lg-4 fade-up">
+                    <div class="oval mr-3"><img src="{% static 'images/free-support.png' %}" alt="Support"></div>
+                    <div class="media-body">
+                        <h5>24/7 Support</h5>
+                        Our customer service team is available round the clock to assist you with any banking queries or issues.
+                    </div>
+                </div>
+                <div class="media col-md-6 col-lg-4 fade-up">
+                    <div class="oval mr-3"><img src="{% static 'images/effectively-increase.png' %}" alt="Rewards"></div>
+                    <div class="media-body">
+                        <h5>Reward Programs</h5>
+                        Earn points and rewards for everyday banking activities. Redeem them for exclusive perks and discounts.
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </section>
 
-<script>
-// Fetch real-time bank and stock market news
-async function fetchNews() {
-    const apiUrl = 'https://newsapi.org/v2/everything?q=bank+OR+stock&apiKey=YOUR_API_KEY';
-    const response = await fetch(apiUrl);
-    const data = await response.json();
-    const articles = data.articles.slice(0, 3); // Get top 3 articles
-
-    articles.forEach((article, index) => {
-        document.getElementById(`news-title-${index + 1}`).textContent = article.title;
-        document.getElementById(`news-content-${index + 1}`).textContent = article.description || "No description available.";
-        document.getElementById(`news-link-${index + 1}`).href = article.url;
-    });
-}
-
-// Call fetchNews on page load
-fetchNews();
-</script>
-
-<footer class="container-fluid" id="gtco-footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6" id="contact">
-                <h4> Contact Us </h4>
-                <input type="text" class="form-control" placeholder="Full Name">
-                <input type="email" class="form-control" placeholder="Email Address">
-                <textarea class="form-control" placeholder="Message"></textarea>
-                <a href="#" class="submit-button">READ MORE <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+    <!-- ─── LOGOS ─── -->
+    <section class="logos-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col logo-item"><img src="{% static 'images/logo1.png' %}" alt="Logo 1"></div>
+                <div class="col logo-item"><img src="{% static 'images/logo2.png' %}" alt="Logo 2"></div>
+                <div class="col logo-item"><img src="{% static 'images/logo3.png' %}" alt="Logo 3"></div>
+                <div class="col logo-item"><img src="{% static 'images/logo4.png' %}" alt="Logo 4"></div>
+                <div class="col logo-item"><img src="{% static 'images/logo5.png' %}" alt="Logo 5"></div>
             </div>
-            <div class="col-lg-6">
-                <div class="row">
-                    <div class="col-6">
-                        <h4>Company</h4>
-                        <ul class="nav flex-column company-nav">
-                            <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">News</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">FAQ's</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-                        </ul>
-                        <h4 class="mt-5">Fllow Us</h4>
-                        <ul class="nav follow-us-nav">
-                            <li class="nav-item"><a class="nav-link pl-0" href="#"><i class="fa fa-facebook"
-                                                                                      aria-hidden="true"></i></a></li>
-                            <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-twitter"
-                                                                                 aria-hidden="true"></i></a></li>
-                            <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-google"
-                                                                                 aria-hidden="true"></i></a></li>
-                            <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-linkedin"
-                                                                                 aria-hidden="true"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="col-6">
-                        <h4>Services</h4>
-                        <ul class="nav flex-column services-nav">
-                            <li class="nav-item"><a class="nav-link" href="#">Savings Accounts</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Checking Accounts</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Credit Cards</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Personal Loans</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Mortgage Loans</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Investment Services</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Business Banking</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Online Banking</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Mobile Banking</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Wealth Management</a></li>
-                        </ul>
+        </div>
+    </section>
 
+    <!-- ─── NEWS ─── -->
+    <section class="news-section" id="news">
+        <div class="container">
+            <h2 class="fade-up">Latest Bank & Stock Market News</h2>
+            <div class="owl-carousel owl-carousel2 owl-theme">
+                <!-- Card 1 -->
+                <div class="fade-up">
+                    <div class="news-card">
+                        <img src="{% static 'images/news1.jpg' %}" alt="News 1">
+                        <div class="card-body">
+                            <h5 id="news-title-1">Loading news...</h5>
+                            <p id="news-content-1">Please wait while we fetch the latest updates.</p>
+                            <a href="#" id="news-link-1" target="_blank">READ MORE <i class="fa fa-angle-right ml-1"></i></a>
+                        </div>
                     </div>
-                    <div class="col-12">
-                        <p>&copy; 2019. All Rights Reserved. Design by <a href="" target="_blank">Valor trust finance</a>.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="fade-up">
+                    <div class="news-card">
+                        <img src="{% static 'images/news2.jpg' %}" alt="News 2">
+                        <div class="card-body">
+                            <h5 id="news-title-2">Loading news...</h5>
+                            <p id="news-content-2">Please wait while we fetch the latest updates.</p>
+                            <a href="#" id="news-link-2" target="_blank">READ MORE <i class="fa fa-angle-right ml-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="fade-up">
+                    <div class="news-card">
+                        <img src="{% static 'images/news3.jpg' %}" alt="News 3">
+                        <div class="card-body">
+                            <h5 id="news-title-3">Loading news...</h5>
+                            <p id="news-content-3">Please wait while we fetch the latest updates.</p>
+                            <a href="#" id="news-link-3" target="_blank">READ MORE <i class="fa fa-angle-right ml-1"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</footer>
+    </section>
 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="{% static 'js/jquery-3.3.1.slim.min.js' %}"></script>
-<script src="{% static 'js/popper.min.js' %}"></script>
-<script src="js/bootstrap.min.js"></script>
-<!-- owl carousel js-->
-<script src="{% static 'owl-carousel/owl.carousel.min.js' %}"></script>
-<script src="{% static 'js/main.js' %}">
-                       document.getElementById("telegramBtn").addEventListener("click", function() {
-            window.open("https://t.me/CUSTOMER_SUPPORT_1485", "_blank");
+    <!-- ─── FOOTER ─── -->
+    <footer class="footer-section" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h4>Contact Us</h4>
+                    <input type="text" class="form-control" placeholder="Full Name">
+                    <input type="email" class="form-control" placeholder="Email Address">
+                    <textarea class="form-control" rows="3" placeholder="Message"></textarea>
+                    <a href="#" class="submit-button">Send Message <i class="fa fa-angle-right ml-1"></i></a>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-6">
+                            <h4>Company</h4>
+                            <ul class="nav flex-column">
+                                <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#">News</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#">FAQ's</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                            </ul>
+                            <h4 class="mt-4">Follow Us</h4>
+                            <ul class="nav follow-us-nav">
+                                <li class="nav-item"><a class="nav-link pl-0" href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-google"></i></a></li>
+                                <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="col-6">
+                            <h4>Services</h4>
+                            <ul class="nav flex-column">
+                                <li class="nav-item"><a class="nav-link" href="#">Savings Accounts</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#">Checking Accounts</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#">Credit Cards</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#">Personal Loans</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#">Mortgage Loans</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#">Investment Services</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#">Business Banking</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#">Online Banking</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#">Mobile Banking</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#">Wealth Management</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="copy text-center mt-4">
+                        <p>&copy; 2025 Nova Trust Finance. All Rights Reserved. Design by <a href="#" target="_blank">Nova Trust</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ─── SCRIPTS ─── -->
+    <script src="{% static 'js/jquery-3.3.1.slim.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'owl-carousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
+    <script>
+        // ─── Owl Carousel Init ───
+        $(document).ready(function() {
+            $('.owl-carousel1').owlCarousel({
+                loop: true,
+                margin: 30,
+                nav: false,
+                dots: true,
+                responsive: {
+                    0: { items: 1 },
+                    768: { items: 2 },
+                    992: { items: 3 }
+                }
+            });
+            $('.owl-carousel2').owlCarousel({
+                loop: true,
+                margin: 30,
+                nav: false,
+                dots: true,
+                responsive: {
+                    0: { items: 1 },
+                    768: { items: 2 },
+                    992: { items: 3 }
+                }
+            });
         });
-</script>
+
+        // ─── Scroll-triggered fade-up ───
+        const faders = document.querySelectorAll('.fade-up');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+        faders.forEach(el => observer.observe(el));
+
+        // ─── Counter Animation ───
+        const counters = document.querySelectorAll('.counter');
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = parseInt(entry.target.dataset.target);
+                    let current = 0;
+                    const increment = Math.ceil(target / 60);
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            entry.target.textContent = target;
+                            clearInterval(timer);
+                        } else {
+                            entry.target.textContent = current;
+                        }
+                    }, 25);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        counters.forEach(el => counterObserver.observe(el));
+
+        // ─── Fetch News (replace API_KEY) ───
+        async function fetchNews() {
+            const apiKey = 'YOUR_API_KEY'; // Replace with your NewsAPI key
+            const url = `https://newsapi.org/v2/everything?q=bank+OR+stock&apiKey=${apiKey}`;
+            try {
+                const res = await fetch(url);
+                const data = await res.json();
+                const articles = data.articles.slice(0, 3);
+                articles.forEach((article, i) => {
+                    const idx = i + 1;
+                    document.getElementById(`news-title-${idx}`).textContent = article.title || 'No title';
+                    document.getElementById(`news-content-${idx}`).textContent = article.description || 'No description available.';
+                    document.getElementById(`news-link-${idx}`).href = article.url || '#';
+                });
+            } catch (e) {
+                console.warn('News fetch failed:', e);
+            }
+        }
+        fetchNews();
+    </script>
+
 </body>
-</html>
+                        </html>
