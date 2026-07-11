@@ -2,304 +2,509 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Nova trust finances - Register Page</title>
-    <!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/6a09f6a0e57a6a1c342a5445/1jorempt4';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
-        <style type="text/css" media="all">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register • Nova Trust Finance</title>
 
-/* Telegram Icon */
-.telegram-icon {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    background-color: #0088cc;
-    color: white;
-    font-size: 30px;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    text-decoration: none;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease-in-out;
-}
+    <!-- Tawk.to Script -->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {},
+            Tawk_LoadStart = new Date();
+        (function() {
+            var s1 = document.createElement("script"),
+                s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/6a09f6a0e57a6a1c342a5445/1jorempt4';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
 
-.telegram-icon:hover {
-    transform: scale(1.1);
-}
-        @keyframes bounceIn {
-            0% {
-                transform: scale(0.5);
-                opacity: 0.5;
-            }
-            60% {
-                transform: scale(1.1);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(1);
-            }
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+
+    <style>
+        /* ───────── RESET & BASE ───────── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background-size: cover;
-            background-position: center;
-            background-repeat:no-repeat;
-            background-image: url("{% static 'images/bg.jpg' %}");
+            min-height: 100vh;
             display: flex;
-            justify-content: center;
             align-items: center;
-            height: 100vh;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+            background: #0b0e1a;
+            background: radial-gradient(ellipse at 20% 50%, #141b3a 0%, #070a14 100%);
+            padding: 1.5rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* ───────── ANIMATED BACKGROUND ORBS ───────── */
+        .bg-orbs {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .bg-orbs span {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.20;
+            animation: orbFloat 25s ease-in-out infinite alternate;
+        }
+        .bg-orbs .orb1 {
+            width: 600px;
+            height: 600px;
+            background: #2d4bff;
+            top: -200px;
+            left: -200px;
+            animation-duration: 18s;
+        }
+        .bg-orbs .orb2 {
+            width: 500px;
+            height: 500px;
+            background: #00b8d4;
+            bottom: -150px;
+            right: -150px;
+            animation-duration: 22s;
+            animation-delay: 2s;
+        }
+        .bg-orbs .orb3 {
+            width: 300px;
+            height: 300px;
+            background: #7c4dff;
+            top: 40%;
+            left: 60%;
+            animation-duration: 26s;
+            animation-delay: 4s;
+            opacity: 0.12;
+        }
+
+        @keyframes orbFloat {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                transform: translate(80px, -60px) scale(1.2);
+            }
+        }
+
+        /* ───────── TELEGRAM FLOATING BUTTON ───────── */
+        .telegram-float {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            z-index: 999;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0088cc, #006699);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            box-shadow: 0 8px 32px rgba(0, 136, 204, 0.35);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            text-decoration: none;
+            animation: telegramBounce 2.5s infinite;
+        }
+        .telegram-float:hover {
+            transform: scale(1.1) translateY(-3px);
+            color: #fff;
+        }
+        @keyframes telegramBounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        /* ───────── MAIN CARD ───────── */
+        .register-wrapper {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 1000px;
+            display: flex;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(24px) saturate(1.4);
+            -webkit-backdrop-filter: blur(24px) saturate(1.4);
+            border-radius: 32px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.02) inset;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.8s ease;
+            opacity: 0;
+            transform: translateY(30px) scale(0.97);
+        }
+        .register-wrapper.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* ───────── LEFT IMAGE ───────── */
+        .register-image {
+            flex: 1;
+            display: none;
+            background: rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            align-items: center;
+            justify-content: center;
+        }
+        .register-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* ───────── RIGHT FORM ───────── */
+        .register-form-container {
+            flex: 1;
+            padding: 2.5rem 2.5rem 2.8rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .register-header {
+            margin-bottom: 2rem;
+        }
+        .register-header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.02em;
             margin: 0;
         }
-
-        .login-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
-            animation: bounceIn 1s ease-in-out;
+        .register-header h1 span {
+            background: linear-gradient(135deg, #4a6cf7, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .register-header p {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
         }
 
-        .login-image {
-            display: none;
-        }
-
-        .login-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .login-header {
-            color: #fff;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .login-icon {
-            width: 50px;
-            height: 50px;
-            margin-bottom: 10px;
-        }
-
-        .login-form {
-            display: flex;
-            flex-direction: column;
-        }
-
+        /* ───────── FORM ELEMENTS ───────── */
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 1.25rem;
         }
-
-        label {
-            margin-bottom: 5px;
+        .form-group label {
             display: block;
-            color: #fff;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 0.4rem;
         }
-
         .input-container {
             position: relative;
             display: flex;
             align-items: center;
         }
-
-        .input-container i {
-            position: absolute;
-            left: 10px;
-            color: #aaa;
-        }
-
-        input{
+        .input-container input {
             width: 100%;
-            padding: 10px 10px 10px 30px;
-            border: none;
-            border-bottom: 2px solid #ccc;
-            background: transparent;
+            padding: 0.8rem 1rem 0.8rem 2.8rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 14px;
             color: #fff;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
             outline: none;
-            transition: border-bottom-color 0.3s;
+            transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
         }
-
-        input:focus {
-            border-bottom-color: #007BFF;
+        .input-container input::placeholder {
+            color: rgba(255, 255, 255, 0.2);
+            font-weight: 300;
         }
-
-        #toggle-password {
+        .input-container input:focus {
+            border-color: rgba(74, 108, 247, 0.4);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 0 0 4px rgba(74, 108, 247, 0.06);
+        }
+        .input-container .input-icon {
             position: absolute;
-            top: 50%;
-            right: 10px;
-            transform: translateY(-50%);
+            left: 1rem;
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 1rem;
+            pointer-events: none;
+            transition: color 0.3s;
+        }
+        .input-container input:focus~.input-icon,
+        .input-container input:focus+.input-icon {
+            color: rgba(74, 108, 247, 0.6);
+        }
+        .toggle-password {
+            position: absolute;
+            right: 1rem;
+            color: rgba(255, 255, 255, 0.2);
             cursor: pointer;
-            color: #aaa;
+            transition: color 0.3s;
+            font-size: 1rem;
+        }
+        .toggle-password:hover {
+            color: rgba(255, 255, 255, 0.6);
         }
 
-        #toggle-password:hover {
-            color: #fff;
-        }
-
-        .login-button {
-            padding: 10px;
-            border: none;
-            border-radius: 4px;
-            background-color: #007BFF;
-            color: #fff;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .login-button:hover {
-            background-color: #0056b3;
-        }
-
-        @media (min-width: 768px) {
-            .login-wrapper {
-                flex-direction: row;
-                padding: 0;
-            }
-
-            .login-image {
-                display: block;
-                flex: 1;
-                border-top-left-radius: 8px;
-                border-bottom-left-radius: 8px;
-                overflow: hidden;
-            }
-
-            .login-container {
-                flex: 1;
-                padding: 30px;
-            }
-
-            .login-header {
-                text-align: left;
-                margin-bottom: 20px;
-            }
-
-            .login-header h1 {
-                margin: 0;
-            }
-        }
-        .log{
-            height: 5rem;
-            border-radius: 5rem;
-        }
-        .cpp{
-            display: flex;
-            justify-content:space-between ;
-            align-items: center;
-        }
-
-        .reg{
-            text-decoration: none;
-            color: #fff;
-        }
-
-        a{
-            text-decoration: none;
-            color: blue;
-        }
-
-        .success-message, .error-message {
-            padding: 10px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            text-align: center;
+        /* ───────── BUTTON ───────── */
+        .btn-register {
             width: 100%;
-            box-sizing: border-box;
-            animation: bounceIn 0.5s ease-in-out; /* Animation for both success and error messages */
+            padding: 0.9rem;
+            background: linear-gradient(135deg, #4a6cf7, #3b5de7);
+            border: none;
+            border-radius: 14px;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 8px 28px rgba(74, 108, 247, 0.25);
+            margin-top: 0.5rem;
+        }
+        .btn-register:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(74, 108, 247, 0.35);
+            background: linear-gradient(135deg, #5a7aff, #4a6cf7);
+        }
+        .btn-register:active {
+            transform: translateY(0) scale(0.98);
         }
 
-        .error-message {
-            color: #dc3545; /* Red color for error messages */
+        /* ───────── LINKS ───────── */
+        .form-links {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.2rem;
+        }
+        .form-links a {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .form-links a:hover {
+            color: #fff;
+        }
+        .form-links .login-link {
+            color: #4a6cf7;
+            font-weight: 500;
+        }
+        .form-links .login-link:hover {
+            color: #00d4ff;
+        }
+
+        /* ───────── ERROR / SUCCESS MESSAGES ───────── */
+        .message-box {
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            display: none;
+            animation: slideMsg 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .message-box.error {
+            display: block;
+            background: rgba(255, 71, 87, 0.08);
+            border: 1px solid rgba(255, 71, 87, 0.12);
+            color: #ff6b7a;
+        }
+        .message-box.success {
+            display: block;
+            background: rgba(0, 212, 255, 0.06);
+            border: 1px solid rgba(0, 212, 255, 0.12);
+            color: #5ee0ff;
+        }
+        .message-box ul {
+            margin: 0;
+            padding-left: 1.2rem;
+        }
+        .message-box li {
+            list-style: disc;
+        }
+
+        @keyframes slideMsg {
+            0% {
+                opacity: 0;
+                transform: translateY(-8px) scale(0.96);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* ───────── RESPONSIVE ───────── */
+        @media (min-width: 768px) {
+            .register-image {
+                display: flex;
+            }
+            .register-form-container {
+                padding: 3rem 3rem 3.5rem;
+            }
+        }
+        @media (max-width: 767px) {
+            .register-wrapper {
+                border-radius: 24px;
+            }
+            .register-form-container {
+                padding: 2rem 1.5rem 2.2rem;
+            }
+            .register-header h1 {
+                font-size: 1.6rem;
+            }
+            .telegram-float {
+                width: 48px;
+                height: 48px;
+                font-size: 1.3rem;
+                bottom: 1.25rem;
+                left: 1.25rem;
+            }
+        }
+
+        /* ───────── UTILITY ───────── */
+        .hidden {
+            display: none !important;
         }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
 </head>
 <body>
-       <a href="https://t.me/CUSTOMER_SUPPORT_1485" class="telegram-icon" target="_blank">
+
+    <!-- ─── BACKGROUND ORBS ─── -->
+    <div class="bg-orbs">
+        <span class="orb1"></span>
+        <span class="orb2"></span>
+        <span class="orb3"></span>
+    </div>
+
+    <!-- ─── TELEGRAM FLOAT ─── -->
+    <a href="https://t.me/CUSTOMER_SUPPORT_1485" class="telegram-float" target="_blank" aria-label="Telegram support">
         <i class="fab fa-telegram"></i>
-       </a>
+    </a>
 
-    <div class="login-wrapper">
-        <div class="login-image">
-            <img src="{% static 'images/reg-removebg-preview.png' %}" alt="Login Image" style="width: 33rem; height: 115%; object-fit: cover;">
+    <!-- ─── REGISTER CARD ─── -->
+    <div class="register-wrapper" id="registerWrapper">
+
+        <!-- Left Image -->
+        <div class="register-image">
+            <img src="{% static 'images/reg-removebg-preview.png' %}" alt="Register illustration" />
         </div>
-        <div class="login-container">
-            <div class="login-header">
-                <h1>Register</h1>
+
+        <!-- Right Form -->
+        <div class="register-form-container">
+            <div class="register-header">
+                <h1>Create <span>Account</span></h1>
+                <p>Join Nova Trust Finance today</p>
             </div>
-            <form method="post" class="login-form">
+
+            <form method="post" class="login-form" id="registerForm">
                 {% csrf_token %}
+
+                <!-- Username -->
                 <div class="form-group">
-                    <label for="username">Username</label>
+                    <label for="id_username">Username</label>
                     <div class="input-container">
-                        {{form.username}}
+                        {{ form.username }}
+                        <span class="input-icon"><i class="fas fa-user"></i></span>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <div class="input-container">
-                        {{form.password1}}
-                        <i id="toggle-password" class="fas fa-eye"></i>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="password">Confirm Password</label>
-                    <div class="input-container">
-                        {{form.password2}}
-                        <i id="toggle-password" class="fas fa-eye"></i>
-                    </div>
-                </div>
-                <button type="submit" class="login-button">Register</button>
-                <br />
-                <div class="cpp">
-                    <a href="">Forgotten password</a>
-                    <a class="reg" href="{% url 'linking_view' %}">Login</a>
                 </div>
 
-                 <div id="" class="error-message">
-                    {{form.errors}}
-                  </div>
+                <!-- Password -->
+                <div class="form-group">
+                    <label for="id_password1">Password</label>
+                    <div class="input-container">
+                        {{ form.password1 }}
+                        <span class="input-icon"><i class="fas fa-lock"></i></span>
+                        <i class="fas fa-eye toggle-password" data-target="id_password1"></i>
+                    </div>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="form-group">
+                    <label for="id_password2">Confirm Password</label>
+                    <div class="input-container">
+                        {{ form.password2 }}
+                        <span class="input-icon"><i class="fas fa-check-circle"></i></span>
+                        <i class="fas fa-eye toggle-password" data-target="id_password2"></i>
+                    </div>
+                </div>
+
+                <!-- Errors -->
+                {% if form.errors %}
+                    <div class="message-box error" id="errorContainer">
+                        <ul>
+                            {% for field, errors in form.errors.items %}
+                                {% for error in errors %}
+                                    <li>{{ field|capfirst }}: {{ error }}</li>
+                                {% endfor %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+
+                <button type="submit" class="btn-register">Register</button>
+
+                <div class="form-links">
+                    <a href="#">Forgot password?</a>
+                    <a href="{% url 'linking_view' %}" class="login-link">Login <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
             </form>
         </div>
     </div>
-    <script type="text/javascript" charset="utf-8">
-        document.addEventListener('DOMContentLoaded', function() {
-            const togglePassword = document.getElementById('toggle-password');
-            const passwordInput = document.getElementById('password');
 
-            togglePassword.addEventListener('click', function() {
-                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-                passwordInput.setAttribute('type', type);
+    <!-- ─── SCRIPTS ─── -->
+    <script>
+        // ─── Show card with fade-in ───
+        document.addEventListener('DOMContentLoaded', function() {
+            const wrapper = document.getElementById('registerWrapper');
+            wrapper.classList.add('visible');
+        });
+
+        // ─── Password toggle ───
+        document.querySelectorAll('.toggle-password').forEach(function(icon) {
+            icon.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('data-target');
+                const input = document.getElementById(targetId);
+                if (!input) return;
+                const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+                input.setAttribute('type', type);
                 this.classList.toggle('fa-eye');
                 this.classList.toggle('fa-eye-slash');
             });
         });
+
+        // ─── Auto-hide error messages after 8s ───
+        const errorBox = document.getElementById('errorContainer');
+        if (errorBox) {
+            setTimeout(function() {
+                errorBox.style.transition = 'opacity 0.5s';
+                errorBox.style.opacity = '0';
+                setTimeout(function() {
+                    errorBox.style.display = 'none';
+                }, 500);
+            }, 8000);
+        }
     </script>
+
 </body>
 </html>
-
-
-
