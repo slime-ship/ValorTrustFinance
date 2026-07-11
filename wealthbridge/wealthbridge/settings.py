@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-
 import os
 import dj_database_url
 import cloudinary
@@ -166,8 +165,9 @@ if not DEBUG:
     # Use WhiteNoise storage for production
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+
+BASE_DIR = Path(__file__).resolve().parent.parent
 MEDIA_URL = '/media/'
 
 # Additional locations of static files
