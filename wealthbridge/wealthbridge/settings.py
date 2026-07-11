@@ -48,7 +48,7 @@ SECRET_KEY = 'django-insecure-3_)^u&niz%-isn%ciqt+qx7*3h!bo(js3+s%x0qray8bkb8d_1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['novatrustbank.pythonanywhere.com']
+ALLOWED_HOSTS=['www.novatrustbank.online']
 
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'dlzn0moho',
@@ -57,7 +57,7 @@ CLOUDINARY_STORAGE = {
 }
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://novatrustbank.pythonanywhere.com",
+    "https://www.novatrustbank.online",
 ]
 
 MEDIA_URL = '/media/'  # or any prefix you choose
