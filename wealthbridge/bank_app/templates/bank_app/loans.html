@@ -3,361 +3,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Nova trust finance</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <meta name="description" content="Dashboard for managing account and transactions.">
-    <!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/6a09f6a0e57a6a1c342a5445/1jorempt4';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Application • Nova Trust Finance</title>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-     <style>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
 
-:root{
-    --sub-color: #150d5e;
-    --card-color:#cfcfcf;
-    --dual-card-color: #fff;
-    --special-text:rgb(43, 83, 3);
-    --font-family:"Nanum Gothic", sans-serif;
-    --bg-color:rgb(214, 220, 226);
-}
+    <style>
+        /* ───────── RESET & BASE ───────── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0b0e1a;
+            background: radial-gradient(ellipse at 20% 50%, #141b3a 0%, #070a14 100%);
+            min-height: 100vh;
+            padding-bottom: 80px;
+            color: #fff;
+            overflow-x: hidden;
+        }
 
-        .telegram-icon {
+        /* ───────── ANIMATED BACKGROUND ORBS ───────── */
+        .bg-orbs {
             position: fixed;
-            bottom: 80px;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .bg-orbs span {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.20;
+            animation: orbFloat 25s ease-in-out infinite alternate;
+        }
+        .bg-orbs .orb1 {
+            width: 600px;
+            height: 600px;
+            background: #2d4bff;
+            top: -200px;
+            left: -200px;
+            animation-duration: 18s;
+        }
+        .bg-orbs .orb2 {
+            width: 500px;
+            height: 500px;
+            background: #00b8d4;
+            bottom: -150px;
+            right: -150px;
+            animation-duration: 22s;
+            animation-delay: 2s;
+        }
+        .bg-orbs .orb3 {
+            width: 300px;
+            height: 300px;
+            background: #7c4dff;
+            top: 40%;
+            left: 60%;
+            animation-duration: 26s;
+            animation-delay: 4s;
+            opacity: 0.12;
+        }
+
+        @keyframes orbFloat {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                transform: translate(80px, -60px) scale(1.2);
+            }
+        }
+
+        /* ───────── TELEGRAM FLOATING BUTTON ───────── */
+        .telegram-float {
+            position: fixed;
+            bottom: 90px;
             right: 20px;
-            z-index: 1000;
-        }
-
-        .telegram-icon img {
-            width: 50px;
-            height: 50px;
-        }
-
-
-*{
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-  font-weight: 400;
-  font-style: normal;
-}
-
-body{
-   background-color: var(--bg-color);
-   font-family: var(--font-family);
-}
-
-.dropdown-navbar {
-    position: relative;
-    width: 100%;
-    background: -webkit-linear-gradient(left, #1d3ede, #f1a10e);
-  background: -ms-linear-gradient(left, #1d3ede, #f1a10e);
-  background: -moz-linear-gradient(left, #1d3ede, #f1a10e);
-  background: -o-linear-gradient(left, #1d3ede, #f1a10e);
-    padding: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.menu-btn {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #fff;
-}
-
-.bank-name {
-    font-size: 1.5rem;
-    color: #fff;
-    margin-right: 10px;
-}
-
-.navbar-header {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    justify-content: space-between;
-}
-
-.navbar-links {
-    display: none;
-    flex-direction: column;
-    background: -webkit-linear-gradient(left, #1d3ede, #f1a10e);
-  background: -ms-linear-gradient(left, #1d3ede, #f1a10e);
-  background: -moz-linear-gradient(left, #1d3ede, #f1a10e);
-  background: -o-linear-gradient(left, #1d3ede, #f1a10e);
-    padding: 10px;
-    position: absolute;
-    width: 100%;
-    top: 100%;
-    left: 0;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    animation: slideDown 0.3s ease-out forwards;
-}
-
-.navbar-links a {
-    text-decoration: none;
-    color: #fff;
-    padding: 10px 0;
-    display: block;
-    text-align: left;
-    transition: background 0.3s;
-}
-.navbar-links a:hover {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 5px;
-}
-
-.page_info{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    gap: 1rem;
-    background: var(--card-color);
-}
-
-.main_page_info{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: baseline;
-    flex-direction: column;
-}
-
-.dp{
-    width: 7rem;
-    border-radius: 50%;
-}
-
-.account_info_box{
-    margin: 0.5rem;
-    padding: 1rem;
-    border-radius: 1rem;
-    background: var(--dual-card-color);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.details_sect{
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.details_sect, aside{
-      line-height: 2rem;
-}
-
-.deposit_box{
-    padding: 1.4rem;
-    border-radius: 10%;
-    background: rgb(207, 219, 230);
-}
-
-.top, .bottom{
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.box_holder{
-    display: flex;
-    gap:0.5rem;
-    flex-direction: column;
-    align-items: center;
-}
-
-.pon{
-    font-size: 10px;
-    font-weight: bold;
-}
-
-.box{
-    width: 50px; /* Small width */
-    height: 50px; /* Small height */
-    overflow: hidden; /* Hides any overflow */
-    display: flex; /* Use flexbox for centering */
-    justify-content: center; /* Centers horizontally */
-    align-items: center; /* Centers vertically */
-    border-radius: 10%;
-}
-
-.responsive-image {
-    max-width: 100%; /* Ensures the image fits within the container */
-    max-height: 100%; /* Ensures the image fits within the container */
-}
-
-.custom-container {
-    margin-top: 40px; /* Adjust as needed */
-    animation: fadeIn 1s ease-in;
-}
-
-.custom-table-box {
-    background-color: #fff; /* Light blue background */
-    padding: 20px; /* Adjust padding as needed */
-    border-radius: 8px;
-    animation: slideIn 0.8s ease-in-out;
-}
-
-.custom-heading {
-    text-align: center;
-    color: #333; /* Darker text color for contrast */
-    margin-bottom: 20px;
-    animation: fadeInUp 1s ease-in-out;
-}
-
-.custom-table-wrapper {
-    overflow-x: auto; /* Allows horizontal scrolling */
-    -ms-overflow-style: none; /* Hides scrollbar in Internet Explorer and Edge */
-    scrollbar-width: none; /* Hides scrollbar in Firefox */
-}
-
-.custom-table-wrapper::-webkit-scrollbar {
-    display: none;
-}
-
-.custom-table td {
-    padding: 8px;
-    border-bottom: 1px solid #ddd;
-}
-
-/* Table header styling */
-.custom-table thead th {
-    background-color: #007bff; /* Blue background */
-    color: white;
-    padding: 10px;
-    text-align: left;
-}
-
-/* Transaction rows styling */
-.custom-transaction-credit {
-    background-color: #e0ffe0; /* Light green for credits */
-    animation: highlightCredit 1s ease-in;
-}
-
-.custom-transaction-debit {
-    background-color: #ffe0e0; /* Light red for debits */
-    animation: highlightDebit 1s ease-in;
-}
-
-/* Animation definitions */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes slideIn {
-    from { transform: translateY(-20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes highlightCredit {
-    from { background-color: #e0ffe0; }
-    to { background-color: #d0f0d0; } /* Slightly darker green */
-}
-
-@keyframes highlightDebit {
-    from { background-color: #ffe0e0; }
-    to { background-color: #f0d0d0; } /* Slightly darker red */
-}
-
-.box2345{
-    padding: 1rem;
-    font-family: Sans-Serif;
-     display: flex;
-     gap: 1rem;
-     flex-direction: column;
-}
-
-.bo1{
-    border-radius: 0.5rem;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 5px 5px 5px #000;
-    background-color: white;
-}
-
-.bo1 h4{
-    text-align:left;
-    font-weight:bold;
-}
-
-.bo1:hover{
-        transition: 1s ease;
-        background: -webkit-linear-gradient(left, #1d3ede, #f1a10e);
-  background: -ms-linear-gradient(left, #1d3ede, #f1a10e);
-  background: -moz-linear-gradient(left, #1d3ede, #f1a10e);
-  background: -o-linear-gradient(left, #1d3ede, #f1a10e);
-        color: #fff;
-        }
-
-.bill{
-    color:#000;
-    display:flex;
-    font-family:arial;
-    font-weight:bolder;
-    align-items:center;
-}
-
-.bottom-navbar {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background: #fff;
+            z-index: 999;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0088cc, #006699);
+            color: #fff;
             display: flex;
-            justify-content: space-around;
-            padding: 10px 0;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-        }
-        .nav-link {
-            text-align: center;
-            color: #000;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 8px 32px rgba(0, 136, 204, 0.35);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             text-decoration: none;
+            animation: telegramBounce 2.5s infinite;
+        }
+        .telegram-float:hover {
+            transform: scale(1.1) translateY(-3px);
+            color: #fff;
+        }
+        @keyframes telegramBounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        /* ───────── NAVBAR ───────── */
+        .navbar-modern {
+            position: relative;
+            z-index: 10;
+            background: rgba(11, 14, 26, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 0.8rem 1rem;
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
         }
-        .nav-link i {
+        .navbar-modern .menu-btn {
+            background: none;
+            border: none;
+            color: #fff;
             font-size: 1.5rem;
-            margin-bottom: 5px;
-            color:#000;
+            cursor: pointer;
         }
-        .nav-link span {
-            font-size: 0.75rem;
+        .navbar-modern .brand {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #fff;
+            letter-spacing: -0.02em;
         }
-                /* Animation for navbar links */
-@keyframes slideDown {
+        .navbar-modern .brand span {
+            background: linear-gradient(135deg, #4a6cf7, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .navbar-links {
+            display: none;
+            flex-direction: column;
+            background: rgba(11, 14, 26, 0.95);
+            backdrop-filter: blur(20px);
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            animation: slideDown 0.3s ease forwards;
+        }
+        .navbar-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            transition: color 0.3s;
+        }
+        .navbar-links a:hover {
+            color: #fff;
+        }
+        .navbar-links a:last-child {
+            border-bottom: none;
+        }
+        @keyframes slideDown {
             from {
                 opacity: 0;
-                transform: translateY(-20px);
+                transform: translateY(-10px);
             }
             to {
                 opacity: 1;
@@ -365,240 +191,444 @@ body{
             }
         }
 
-.billy{
-    color:#000;
-    display:flex;
-    align-items:center;
-    font-size:1.3rem;
-    font-weight:bold;
-}
-
-.box_holder a {
-    display: flex; /* Make sure the anchor tag takes full space */
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none; /* Remove underline from links */
-    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth transition */
-}
-
-.box_holder a:hover,
-.box_holder a:active {
-    transform: scale(1.05); /* Slightly enlarge the box */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
-}
-
-
-.balance {
-    font-size: 2rem; /* Adjust size as needed */
-    font-weight: bolder; /* Makes the text bold */
-    white-space: nowrap; /* Prevents line breaks */
-}
-
-@keyframes bounceIn {
-    0% {
-        transform: scale(0.5);
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1.1);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-.bounce-in {
-    animation: bounceIn 0.5s ease forwards;
-}
-small{
-    text-transform: capitalize;
-}
-.info {
-            position: relative;
-            bottom: 10%;
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
-            font-size: 1rem;
-            color: aliceblue;
-            background: -webkit-linear-gradient(left, #1d3ede, #f1a10e);
-  background: -ms-linear-gradient(left, #1d3ede, #f1a10e);
-  background: -moz-linear-gradient(left, #1d3ede, #f1a10e);
-  background: -o-linear-gradient(left, #1d3ede, #f1a10e);
-            padding: 10px;
-            border-radius: 10px;
-        }
-
-        .info span {
-            font-weight: bold;
-            color: #fff;
-        }
-
+        /* ───────── MAIN CONTENT ───────── */
         .main-content {
-            padding: 20px;
-            margin-top: 60px; /* Adjust based on the height of the navbar */
- }
-        .card {
-            margin-bottom: 20px;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .action-btn {
-            margin-right: 10px;
-        }
-        .loan-submit-btn {
-            margin-top: 20px;
-        }
-        .profile-img{
-          width: 3rem;
-          height: 3rem;
-          border-radius: 3rem;
+            position: relative;
+            z-index: 1;
+            padding: 1.5rem 1rem 2rem;
+            max-width: 640px;
+            margin: 0 auto;
         }
 
-        .telegram-icon {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            width: 60px;
-            height: 60px;
-            background-color: #0088cc;
-            border-radius: 50%;
+        /* ───────── GLASS CARD ───────── */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(16px) saturate(1.4);
+            -webkit-backdrop-filter: blur(16px) saturate(1.4);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            padding: 2rem 1.8rem;
+            margin-bottom: 1.25rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .glass-card .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.3rem;
             display: flex;
             align-items: center;
-            justify-content: center;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-            cursor: pointer;
-            animation: bounce 2s infinite;
-            transition: transform 0.3s;
+            gap: 0.6rem;
+        }
+        .glass-card .card-title span {
+            background: linear-gradient(135deg, #4a6cf7, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .glass-card .card-title .badge-icon {
+            font-size: 1.6rem;
+            color: rgba(74, 108, 247, 0.4);
+        }
+        .glass-card .card-sub {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
         }
 
-        .telegram-icon:hover {
-            transform: scale(1.1);
+        /* ───────── STATUS INDICATOR ───────── */
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0, 212, 255, 0.06);
+            border: 1px solid rgba(0, 212, 255, 0.08);
+            border-radius: 40px;
+            padding: 0.3rem 1rem 0.3rem 0.6rem;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #5ee0ff;
+            margin-bottom: 1.2rem;
         }
-
-        @keyframes bounce {
+        .status-indicator .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #5ee0ff;
+            animation: dotPulse 2s ease-in-out infinite;
+        }
+        @keyframes dotPulse {
             0%, 100% {
-                transform: translateY(0);
+                opacity: 0.4;
+                transform: scale(0.9);
             }
             50% {
-                transform: translateY(-10px);
+                opacity: 1;
+                transform: scale(1.2);
             }
         }
 
-        .telegram-icon img {
-            width: 35px;
-            height: 35px;
+        /* ───────── FORM ELEMENTS ───────── */
+        .form-group {
+            margin-bottom: 1.2rem;
         }
-     </style>
-    <!--Resorces-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        .form-group label {
+            display: block;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        .input-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .input-container .input-icon {
+            position: absolute;
+            left: 1rem;
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 1rem;
+            pointer-events: none;
+            transition: color 0.3s;
+            z-index: 2;
+        }
+        .input-container input,
+        .input-container textarea {
+            width: 100%;
+            padding: 0.8rem 1rem 0.8rem 2.8rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 14px;
+            color: #fff;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+            transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
+            resize: vertical;
+        }
+        .input-container textarea {
+            padding-top: 0.8rem;
+            min-height: 80px;
+        }
+        .input-container input::placeholder,
+        .input-container textarea::placeholder {
+            color: rgba(255, 255, 255, 0.2);
+            font-weight: 300;
+        }
+        .input-container input:focus,
+        .input-container textarea:focus {
+            border-color: rgba(74, 108, 247, 0.4);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 0 0 4px rgba(74, 108, 247, 0.06);
+        }
+        .input-container input:focus~.input-icon,
+        .input-container textarea:focus~.input-icon {
+            color: rgba(74, 108, 247, 0.6);
+        }
+        /* Textarea icon positioning */
+        .input-container.textarea-icon .input-icon {
+            top: 1rem;
+            transform: none;
+        }
+
+        /* ───────── BUTTON ───────── */
+        .btn-submit {
+            width: 100%;
+            padding: 0.9rem;
+            background: linear-gradient(135deg, #4a6cf7, #3b5de7);
+            border: none;
+            border-radius: 14px;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 8px 28px rgba(74, 108, 247, 0.25);
+            margin-top: 0.5rem;
+        }
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(74, 108, 247, 0.35);
+            background: linear-gradient(135deg, #5a7aff, #4a6cf7);
+        }
+        .btn-submit:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        /* ───────── BOTTOM NAV ───────── */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background: rgba(11, 14, 26, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            display: flex;
+            justify-content: space-around;
+            padding: 0.6rem 0 0.8rem;
+        }
+        .bottom-nav .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.3);
+            transition: color 0.3s;
+            font-size: 0.65rem;
+        }
+        .bottom-nav .nav-item i {
+            font-size: 1.4rem;
+            margin-bottom: 0.2rem;
+        }
+        .bottom-nav .nav-item:hover,
+        .bottom-nav .nav-item.active {
+            color: #4a6cf7;
+        }
+
+        /* ───────── ANIMATIONS ───────── */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .fade-up {
+            animation: fadeUp 0.6s ease forwards;
+        }
+        .fade-up-d1 {
+            animation-delay: 0.05s;
+            opacity: 0;
+        }
+        .fade-up-d2 {
+            animation-delay: 0.1s;
+            opacity: 0;
+        }
+        .fade-up-d3 {
+            animation-delay: 0.15s;
+            opacity: 0;
+        }
+        .fade-up-d4 {
+            animation-delay: 0.2s;
+            opacity: 0;
+        }
+        .fade-up-d5 {
+            animation-delay: 0.25s;
+            opacity: 0;
+        }
+
+        /* ───────── RESPONSIVE ───────── */
+        @media (max-width: 600px) {
+            .glass-card {
+                padding: 1.5rem 1.2rem;
+            }
+            .glass-card .card-title {
+                font-size: 1.2rem;
+            }
+            .telegram-float {
+                width: 48px;
+                height: 48px;
+                font-size: 1.3rem;
+                bottom: 80px;
+                right: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="telegram-icon" id="telegramBtn">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+
+    <!-- ─── BACKGROUND ORBS ─── -->
+    <div class="bg-orbs">
+        <span class="orb1"></span>
+        <span class="orb2"></span>
+        <span class="orb3"></span>
     </div>
-    <header>
-        <nav class="dropdown-navbar" id="dropdown-navbar">
-            <div class="navbar-header">
-                <button class="menu-btn" id="menu-btn">&#9776;</button>
-                <span class="bank-name"> Nova trust finance</span>
-            </div>
-            <div class="navbar-links" id="navbar-links">
-                <a href="{% url 'dashboard' %}">Home</a>
-                <a href="{% url 'setting' %}">Accounts</a>
-                <a href="{% url 'transaction' %}">Transactions</a>
-                <a href="{% url 'reset_profile' %}">Settings</a>
-                <a href="{% url 'logout' %}">Logout</a>
-            </div>
-        </nav>
 
+    <!-- ─── TELEGRAM FLOAT ─── -->
+    <a href="https://t.me/CUSTOMER_SUPPORT_1485" class="telegram-float" target="_blank" aria-label="Telegram support">
+        <i class="fab fa-telegram"></i>
+    </a>
 
-    </header>
-<div class="main-content">
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Loan Application</h5>
+    <!-- ─── NAVBAR ─── -->
+    <nav class="navbar-modern">
+        <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
+            <i class="fas fa-bars"></i>
+        </button>
+        <span class="brand">Nova <span>Trust</span></span>
+        <div style="width: 2rem;"></div>
+        <div class="navbar-links" id="navbarLinks">
+            <a href="{% url 'dashboard' %}"><i class="fas fa-home mr-2"></i>Home</a>
+            <a href="{% url 'setting' %}"><i class="fas fa-cog mr-2"></i>Accounts</a>
+            <a href="{% url 'transaction' %}"><i class="fas fa-list-ul mr-2"></i>Transactions</a>
+            <a href="{% url 'reset_profile' %}"><i class="fas fa-user-edit mr-2"></i>Settings</a>
+            <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt mr-2"></i>Logout</a>
+        </div>
+    </nav>
+
+    <!-- ─── MAIN CONTENT ─── -->
+    <div class="main-content">
+
+        <div class="glass-card fade-up fade-up-d1">
+            <!-- Status Indicator -->
+            <div class="status-indicator">
+                <span class="dot"></span>
+                Loan Application · Secure
+            </div>
+
+            <div class="card-title">
+                <span>Loan</span> Application
+                <span class="badge-icon"><i class="bi bi-hand-thumbs-up"></i></span>
+            </div>
+            <div class="card-sub">Apply for a loan quickly and securely</div>
+
             <form id="loanApplicationForm">
-                <div class="form-group">
+                <!-- Full Name -->
+                <div class="form-group fade-up fade-up-d2">
                     <label for="fullName">Full Name</label>
-                    <input type="text" class="form-control" id="fullName" placeholder="Enter your full name" required>
+                    <div class="input-container">
+                        <input type="text" id="fullName" placeholder="Enter your full name" required>
+                        <span class="input-icon"><i class="fas fa-user"></i></span>
+                    </div>
                 </div>
-                <div class="form-group">
+
+                <!-- Email -->
+                <div class="form-group fade-up fade-up-d2">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="Enter your email address" required>
+                    <div class="input-container">
+                        <input type="email" id="email" placeholder="Enter your email address" required>
+                        <span class="input-icon"><i class="fas fa-envelope"></i></span>
+                    </div>
                 </div>
-                <div class="form-group">
+
+                <!-- Phone Number -->
+                <div class="form-group fade-up fade-up-d3">
                     <label for="phoneNumber">Phone Number</label>
-                    <input type="tel" class="form-control" id="phoneNumber" placeholder="Enter your phone number" required>
+                    <div class="input-container">
+                        <input type="tel" id="phoneNumber" placeholder="Enter your phone number" required>
+                        <span class="input-icon"><i class="fas fa-phone"></i></span>
+                    </div>
                 </div>
-                <div class="form-group">
+
+                <!-- Loan Amount -->
+                <div class="form-group fade-up fade-up-d3">
                     <label for="loanAmount">Loan Amount</label>
-                    <input type="number" class="form-control" id="loanAmount" placeholder="Enter the desired loan amount" required>
+                    <div class="input-container">
+                        <input type="number" id="loanAmount" placeholder="Enter desired loan amount" required min="1" step="0.01">
+                        <span class="input-icon"><i class="fas fa-coins"></i></span>
+                    </div>
                 </div>
-                <div class="form-group">
+
+                <!-- Loan Purpose -->
+                <div class="form-group fade-up fade-up-d4">
                     <label for="loanPurpose">Loan Purpose</label>
-                    <textarea class="form-control" id="loanPurpose" placeholder="Enter the purpose of the loan" rows="3" required></textarea>
+                    <div class="input-container textarea-icon">
+                        <textarea id="loanPurpose" placeholder="Enter the purpose of the loan" rows="3" required></textarea>
+                        <span class="input-icon"><i class="fas fa-pen"></i></span>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-primary loan-submit-btn">Submit Application</button>
+
+                <button type="submit" class="btn-submit fade-up fade-up-d5">
+                    <i class="fas fa-paper-plane mr-2"></i> Submit Application
+                </button>
             </form>
         </div>
+
     </div>
-</div>
-       <br><br>
-            <!-- Bottom Navigation Bar -->
-            <nav class="bottom-navbar">
-                <a href="{% url 'dashboard' %}" class="nav-link">
-                    <i class="fas fa-home"></i>
-                    <span>Home</span>
-                </a>
-                <a href="{% url 'bank' %}" class="nav-link">
-                    <i class="fas fa-exchange-alt"></i>
-                    <span>Transfer</span>
-                </a>
-                <a href="" class="nav-link">
-                    <i class="fas fa-chart-line"></i>
-                    <span>Overview</span>
-                </a>
-                <a href="{% url 'setting' %}" class="nav-link">
-                    <i class="fas fa-user"></i>
-                    <span>Profile</span>
-                </a>
 
-            </nav>
-        </div>
+    <!-- ─── BOTTOM NAV ─── -->
+    <nav class="bottom-nav">
+        <a href="{% url 'dashboard' %}" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="{% url 'bank' %}" class="nav-item">
+            <i class="fas fa-exchange-alt"></i>
+            <span>Transfer</span>
+        </a>
+        <a href="#" class="nav-item active">
+            <i class="fas fa-chart-line"></i>
+            <span>Overview</span>
+        </a>
+        <a href="{% url 'setting' %}" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+        </a>
+    </nav>
 
+    <!-- ─── SCRIPTS ─── -->
     <script>
-        // Code for the navbar
-        const menuBtn = document.getElementById('menu-btn');
-        const navbarLinks = document.getElementById('navbar-links');
-
+        // ─── Navbar toggle ───
+        const menuBtn = document.getElementById('menuBtn');
+        const navbarLinks = document.getElementById('navbarLinks');
         menuBtn.addEventListener('click', () => {
             navbarLinks.style.display = navbarLinks.style.display === 'flex' ? 'none' : 'flex';
         });
+
+        // ─── Form submission → redirect to KYC ───
         document.addEventListener('DOMContentLoaded', function() {
-        // Handle loan application form submission
-        document.getElementById('loanApplicationForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent default form submission
+            document.getElementById('loanApplicationForm').addEventListener('submit', function(event) {
+                event.preventDefault();
 
-            // Retrieve form data
-            const fullName = document.getElementById('fullName').value;
-            const email = document.getElementById('email').value;
-            const phoneNumber = document.getElementById('phoneNumber').value;
-            const loanAmount = document.getElementById('loanAmount').value;
-            const loanPurpose = document.getElementById('loanPurpose').value;
+                const fullName = document.getElementById('fullName').value;
+                const email = document.getElementById('email').value;
+                const phoneNumber = document.getElementById('phoneNumber').value;
+                const loanAmount = document.getElementById('loanAmount').value;
+                const loanPurpose = document.getElementById('loanPurpose').value;
 
-            // Optional: Perform validation before submission
+                // Basic validation
+                if (!fullName || !email || !phoneNumber || !loanAmount || !loanPurpose) {
+                    alert('Please fill in all fields.');
+                    return;
+                }
 
-            // Redirect to KYC page (example)
-            window.location.href = `{% url 'kyc' %}?fullName=${fullName}&email=${email}&phoneNumber=${phoneNumber}&loanAmount=${loanAmount}&loanPurpose=${encodeURIComponent(loanPurpose)}`;
+                // Redirect to KYC page with query parameters
+                const url = `{% url 'kyc' %}?fullName=${encodeURIComponent(fullName)}&email=${encodeURIComponent(email)}&phoneNumber=${encodeURIComponent(phoneNumber)}&loanAmount=${encodeURIComponent(loanAmount)}&loanPurpose=${encodeURIComponent(loanPurpose)}`;
+                window.location.href = url;
+            });
         });
-    });
-    document.getElementById("telegramBtn").addEventListener("click", function() {
-            window.open("https://t.me/CUSTOMER_SUPPORT_1485", "_blank");
+
+        // ─── Telegram button ───
+        document.querySelector('.telegram-float')?.addEventListener('click', function(e) {
+            window.open('https://t.me/CUSTOMER_SUPPORT_1485', '_blank');
         });
     </script>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- ─── SMARTSUPP LIVE CHAT ─── (replaces Tawk.to) -->
+    <script type="text/javascript">
+        var _smartsupp = _smartsupp || {};
+        _smartsupp.key = '00b4f1c5f7c49d68712cef0a5448484bcce83492';
+        window.smartsupp || (function(d) {
+            var s, c, o = smartsupp = function() { o._.push(arguments); };
+            o._ = [];
+            s = d.getElementsByTagName('script')[0];
+            c = d.createElement('script');
+            c.type = 'text/javascript';
+            c.charset = 'utf-8';
+            c.async = true;
+            c.src = 'https://www.smartsuppchat.com/loader.js?';
+            s.parentNode.insertBefore(c, s);
+        })(document);
+    </script>
+    <noscript>Powered by <a href="https://www.smartsupp.com" target="_blank">Smartsupp</a></noscript>
+
 </body>
-</html>
+          </html>
