@@ -4,431 +4,678 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Settings - Nova trust finance</title>
-    <!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/6a09f6a0e57a6a1c342a5445/1jorempt4';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Settings • Nova Trust Finance</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+
     <style>
-        body, html {
+        /* ───────── RESET & BASE ───────── */
+        * {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: rgb(214, 220, 226);
-            height: 100%;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0b0e1a;
+            background: radial-gradient(ellipse at 20% 50%, #141b3a 0%, #070a14 100%);
+            min-height: 100vh;
+            padding-bottom: 80px;
+            color: #fff;
             overflow-x: hidden;
         }
-        .dashboard {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+
+        /* ───────── ANIMATED BACKGROUND ORBS ───────── */
+        .bg-orbs {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
         }
-        .dropdown-navbar {
+        .bg-orbs span {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.20;
+            animation: orbFloat 25s ease-in-out infinite alternate;
+        }
+        .bg-orbs .orb1 {
+            width: 600px;
+            height: 600px;
+            background: #2d4bff;
+            top: -200px;
+            left: -200px;
+            animation-duration: 18s;
+        }
+        .bg-orbs .orb2 {
+            width: 500px;
+            height: 500px;
+            background: #00b8d4;
+            bottom: -150px;
+            right: -150px;
+            animation-duration: 22s;
+            animation-delay: 2s;
+        }
+        .bg-orbs .orb3 {
+            width: 300px;
+            height: 300px;
+            background: #7c4dff;
+            top: 40%;
+            left: 60%;
+            animation-duration: 26s;
+            animation-delay: 4s;
+            opacity: 0.12;
+        }
+
+        @keyframes orbFloat {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                transform: translate(80px, -60px) scale(1.2);
+            }
+        }
+
+        /* ───────── TELEGRAM FLOATING BUTTON ───────── */
+        .telegram-float {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            z-index: 999;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0088cc, #006699);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 8px 32px rgba(0, 136, 204, 0.35);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            text-decoration: none;
+            animation: telegramBounce 2.5s infinite;
+        }
+        .telegram-float:hover {
+            transform: scale(1.1) translateY(-3px);
+            color: #fff;
+        }
+        @keyframes telegramBounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        /* ───────── NAVBAR ───────── */
+        .navbar-modern {
             position: relative;
-            width: 100%;
-            background: -webkit-linear-gradient(left, #1d3ede, #f1a10e);
-  background: -ms-linear-gradient(left, #1d3ede, #f1a10e);
-  background: -moz-linear-gradient(left, #1d3ede, #f1a10e);
-  background: -o-linear-gradient(left, #1d3ede, #f1a10e);
-            padding: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
+            z-index: 10;
+            background: rgba(11, 14, 26, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 0.8rem 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        .navbar-header {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            justify-content: space-between;
-        }
-        .menu-btn {
+        .navbar-modern .menu-btn {
             background: none;
             border: none;
+            color: #fff;
             font-size: 1.5rem;
             cursor: pointer;
-            color: #fff;
         }
-        .bank-name {
-            font-size: 1.5rem;
+        .navbar-modern .brand {
+            font-weight: 700;
+            font-size: 1.2rem;
             color: #fff;
-            margin-right: 10px;
+            letter-spacing: -0.02em;
+        }
+        .navbar-modern .brand span {
+            background: linear-gradient(135deg, #4a6cf7, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         .navbar-links {
             display: none;
             flex-direction: column;
-            background: -webkit-linear-gradient(left, #1d3ede, #f1a10e);
-  background: -ms-linear-gradient(left, #1d3ede, #f1a10e);
-  background: -moz-linear-gradient(left, #1d3ede, #f1a10e);
-  background: -o-linear-gradient(left, #1d3ede, #f1a10e);
-            padding: 10px;
+            background: rgba(11, 14, 26, 0.95);
+            backdrop-filter: blur(20px);
             position: absolute;
-            width: 100%;
             top: 100%;
             left: 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            animation: slideDown 0.3s ease-out forwards;
+            width: 100%;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            animation: slideDown 0.3s ease forwards;
         }
         .navbar-links a {
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
-            color: #fff;
-            padding: 10px 0;
-            display: block;
-            text-align: left;
-            transition: background 0.3s;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            transition: color 0.3s;
         }
         .navbar-links a:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 5px;
+            color: #fff;
         }
-        .main-content {
-            flex: 1;
-            padding: 20px;
-        }
-        .settings-section {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
-        .settings-section h2 {
-            color: #007bff;
-            margin-bottom: 20px;
-        }
-        .settings-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid #ccc;
-        }
-        .settings-item:last-child {
+        .navbar-links a:last-child {
             border-bottom: none;
-        }
-        .settings-item label {
-            font-weight: bold;
-            color: #333;
-        }
-        .settings-item input, .settings-item select {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .settings-item button {
-            background: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .settings-item button:hover {
-            background: #0056b3;
-        }
-        .bottom-navbar {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background: #fff;
-            display: flex;
-            justify-content: space-around;
-            padding: 10px 0;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-        }
-        .nav-link {
-            text-align: center;
-            color: #000;
-            text-decoration: none;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .nav-link i {
-            font-size: 1.5rem;
-            margin-bottom: 5px;
-            color: #000;
-        }
-        .nav-link span {
-            font-size: 0.75rem;
         }
         @keyframes slideDown {
             from {
                 opacity: 0;
-                transform: translateY(-20px);
+                transform: translateY(-10px);
             }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-          .message-container {
+
+        /* ───────── MAIN CONTENT ───────── */
+        .main-content {
+            position: relative;
+            z-index: 1;
+            padding: 1.5rem 1rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* ───────── PAGE HEADER ───────── */
+        .page-header {
+            margin-bottom: 1.5rem;
+        }
+        .page-header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.02em;
+        }
+        .page-header h1 span {
+            background: linear-gradient(135deg, #4a6cf7, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .page-header p {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.9rem;
+        }
+
+        /* ───────── GLASS CARD ───────── */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(16px) saturate(1.4);
+            -webkit-backdrop-filter: blur(16px) saturate(1.4);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            padding: 1.5rem 1.8rem;
+            margin-bottom: 1.25rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .glass-card .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .glass-card .section-title i {
+            color: rgba(74, 108, 247, 0.5);
+            font-size: 1.2rem;
+        }
+
+        /* ───────── SETTINGS ITEMS ───────── */
+        .settings-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.7rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .settings-item:last-child {
+            border-bottom: none;
+        }
+        .settings-item .label {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .settings-item .value {
+            color: #fff;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-align: right;
+            max-width: 60%;
+            word-break: break-word;
+        }
+        .settings-item .value a {
+            color: #4a6cf7;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .settings-item .value a:hover {
+            color: #00d4ff;
+        }
+        .settings-item select {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+            color: #fff;
+            padding: 0.4rem 0.8rem;
+            font-size: 0.85rem;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+            transition: border-color 0.3s;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+        .settings-item select:focus {
+            border-color: rgba(74, 108, 247, 0.4);
+        }
+        .settings-item select option {
+            background: #1a1f30;
+            color: #fff;
+        }
+        .settings-item .btn-action {
+            background: rgba(255, 71, 87, 0.1);
+            border: 1px solid rgba(255, 71, 87, 0.15);
+            border-radius: 10px;
+            color: #ff6b7a;
+            padding: 0.4rem 1.2rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+        }
+        .settings-item .btn-action:hover {
+            background: rgba(255, 71, 87, 0.2);
+            transform: translateY(-1px);
+        }
+        .settings-item .btn-action.btn-danger {
+            background: rgba(255, 71, 87, 0.15);
+            border-color: rgba(255, 71, 87, 0.2);
+            color: #ff6b7a;
+        }
+        .settings-item .btn-action.btn-danger:hover {
+            background: rgba(255, 71, 87, 0.25);
+        }
+
+        /* ───────── MESSAGES ───────── */
+        .message-container {
             position: fixed;
-            top: 0;
+            top: 1rem;
             left: 50%;
             transform: translateX(-50%);
-            z-index: 1000;
-            width: 100%;
+            z-index: 2000;
+            width: 90%;
+            max-width: 500px;
             text-align: center;
         }
         .message {
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid transparent;
-            border-radius: 4px;
-            animation: bounce 0.5s ease;
+            padding: 0.8rem 1.2rem;
+            border-radius: 14px;
+            background: rgba(0, 212, 255, 0.06);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            color: #5ee0ff;
+            font-size: 0.9rem;
+            animation: slideDown 0.4s ease forwards;
         }
-        .message-success {
-            color: #3c763d;
-            background-color: #dff0d8;
-            border-color: #d6e9c6;
-        }
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-30px);
-            }
-            60% {
-                transform: translateY(-15px);
-            }
-        }
-                .telegram-icon {
-            position: fixed;
-            bottom: 80px;
-            right: 20px;
-            z-index: 1000;
+        .message-error {
+            background: rgba(255, 71, 87, 0.06);
+            border-color: rgba(255, 71, 87, 0.1);
+            color: #ff6b7a;
         }
 
-        .telegram-icon img {
-            width: 50px;
-            height: 50px;
-        }
-        .telegram-icon {
+        /* ───────── BOTTOM NAV ───────── */
+        .bottom-nav {
             position: fixed;
-            bottom: 20px;
-            left: 20px;
-            width: 60px;
-            height: 60px;
-            background-color: #0088cc;
-            border-radius: 50%;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background: rgba(11, 14, 26, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
             display: flex;
+            justify-content: space-around;
+            padding: 0.6rem 0 0.8rem;
+        }
+        .bottom-nav .nav-item {
+            display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-            cursor: pointer;
-            animation: bounce 2s infinite;
-            transition: transform 0.3s;
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.3);
+            transition: color 0.3s;
+            font-size: 0.65rem;
+        }
+        .bottom-nav .nav-item i {
+            font-size: 1.4rem;
+            margin-bottom: 0.2rem;
+        }
+        .bottom-nav .nav-item:hover,
+        .bottom-nav .nav-item.active {
+            color: #4a6cf7;
         }
 
-        .telegram-icon:hover {
-            transform: scale(1.1);
-        }
-
-        @keyframes bounce {
-            0%, 100% {
+        /* ───────── ANIMATIONS ───────── */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
                 transform: translateY(0);
             }
-            50% {
-                transform: translateY(-10px);
-            }
+        }
+        .fade-up {
+            animation: fadeUp 0.6s ease forwards;
+        }
+        .fade-up-d1 {
+            animation-delay: 0.05s;
+            opacity: 0;
+        }
+        .fade-up-d2 {
+            animation-delay: 0.1s;
+            opacity: 0;
+        }
+        .fade-up-d3 {
+            animation-delay: 0.15s;
+            opacity: 0;
+        }
+        .fade-up-d4 {
+            animation-delay: 0.2s;
+            opacity: 0;
         }
 
-        .telegram-icon img {
-            width: 35px;
-            height: 35px;
+        /* ───────── RESPONSIVE ───────── */
+        @media (max-width: 600px) {
+            .glass-card {
+                padding: 1.2rem 1.2rem;
+            }
+            .settings-item {
+                flex-wrap: wrap;
+                gap: 0.3rem;
+            }
+            .settings-item .value {
+                max-width: 100%;
+                text-align: left;
+                width: 100%;
+            }
+            .settings-item select {
+                width: 100%;
+            }
+            .telegram-float {
+                width: 48px;
+                height: 48px;
+                font-size: 1.3rem;
+                bottom: 80px;
+                right: 15px;
+            }
+            .page-header h1 {
+                font-size: 1.4rem;
+            }
         }
     </style>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <!-- Google Fonts - Roboto -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="telegram-icon" id="telegramBtn">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+
+    <!-- ─── BACKGROUND ORBS ─── -->
+    <div class="bg-orbs">
+        <span class="orb1"></span>
+        <span class="orb2"></span>
+        <span class="orb3"></span>
     </div>
-    <div class="dashboard">
-            {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-        <li>{{ message }}</li>
-        {% endfor %}
-    </ul>
+
+    <!-- ─── TELEGRAM FLOAT ─── -->
+    <a href="https://t.me/CUSTOMER_SUPPORT_1485" class="telegram-float" target="_blank" aria-label="Telegram support">
+        <i class="fab fa-telegram"></i>
+    </a>
+
+    <!-- ─── MESSAGES ─── -->
+    {% if messages %}
+        <div class="message-container">
+            {% for message in messages %}
+                <div class="message {% if message.tags == 'error' %}message-error{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
     {% endif %}
-        <!-- Drop-down Navigation Bar -->
-        <nav class="dropdown-navbar" id="dropdown-navbar">
-            <div class="navbar-header">
-                <button class="menu-btn" id="menu-btn">&#9776;</button>
-                <span class="bank-name"> Nova trust finance</span>
-            </div>
-            <div class="navbar-links" id="navbar-links">
-                <a href="{% url 'dashboard' %}">Home</a>
-                <a href="{% url 'setting' %}">Accounts</a>
-                <a href="{% url 'transaction' %}">Transactions</a>
-                <a href="{% url 'setting' %}">Settings</a>
-                <a href="{% url 'loans' %}">Loans</a>
-                <a href="{% url 'logout' %}">Logout</a>
-            </div>
-        </nav>
 
-        <!-- Main Content -->
-        <div class="main-content">
-            <header>
-                <h1 style="color: #007bff;">Settings</h1>
-            </header>
+    <!-- ─── NAVBAR ─── -->
+    <nav class="navbar-modern">
+        <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
+            <i class="fas fa-bars"></i>
+        </button>
+        <span class="brand">Nova <span>Trust</span></span>
+        <div style="width: 2rem;"></div>
+        <div class="navbar-links" id="navbarLinks">
+            <a href="{% url 'dashboard' %}"><i class="fas fa-home mr-2"></i>Home</a>
+            <a href="{% url 'setting' %}"><i class="fas fa-cog mr-2"></i>Accounts</a>
+            <a href="{% url 'transaction' %}"><i class="fas fa-list-ul mr-2"></i>Transactions</a>
+            <a href="{% url 'setting' %}"><i class="fas fa-sliders-h mr-2"></i>Settings</a>
+            <a href="{% url 'loans' %}"><i class="fas fa-hand-holding-usd mr-2"></i>Loans</a>
+            <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt mr-2"></i>Logout</a>
+        </div>
+    </nav>
 
-            <!-- Profile Information Section -->
-            <section class="settings-section">
-                <h2>Profile Information</h2>
-                <div class="settings-item">
-                    <label for="username">Username:</label>
-                    {{request.user}}
-                </div>
-                <div class="settings-item">
-                    <label for="email">Email:</label>
-                    {{request.user.email}}
-                </div>
-                <div class="settings-item">
-                    <label for="email">First Name:</label>
-                    {{user_profile.first_name}}
-                </div>
-                <div class="settings-item">
-                    <label for="email">Middle Name:</label>
-                    {{user_profile.middle_name}}
-                </div>
+    <!-- ─── MAIN CONTENT ─── -->
+    <div class="main-content">
 
-                <div class="settings-item">
-                    <label for="email">Last Name:</label>
-                    {{user_profile.last_name}}
-                </div>
-                <div class="settings-item">
-                    <label for="email">Mobile Number:</label>
-                    {{user_profile.phone_number}}
-                </div>
-               <div class="settings-item">
-                    <label for="email">Date of birth:</label>
-                    {{user_profile.date_of_birth}}
-                </div>
-                <div class="settings-item">
-                    <label for="email">Employment status:</label>
-                    {{user_profile.status}}
-                </div>
-                <div class="settings-item">
-                    <label for="email">Country:</label>
-                    {{user_profile.country}}
-                </div>
-                <div class="settings-item">
-                    <label for="email">Currency:</label>
-                    {{user_profile.currency}}
-                </div>
-                <div class="settings-item">
-                    <label for="email">Gender:</label>
-                    {{user_profile.Gender}}
-                </div>
-                <div class="settings-item">
-                    <label for="email">Account type:</label>
-                    {{user_profile.account_type}}
-                </div>
-
-    </form>
-                </div>
-            </section>
-
-            <!-- Security Settings Section -->
-            <section class="settings-section">
-                <h2>Security Settings</h2>
-                <div class="settings-item">
-                    <label for="password">Profile reset:</label>
-                    <a href="{% url 'reset_profile' %}">Reset</a>
-                </div>
-                <div class="settings-item">
-                    <label for="2fa">Two-Factor Authentication:</label>
-                    <select id="2fa" name="2fa">
-                        <option value="enabled">Enabled</option>
-                        <option value="disabled">Disabled</option>
-                    </select>
-                </div>
-            </section>
-
-            <!-- Notification Preferences Section -->
-            <section class="settings-section">
-                <h2>Notification Preferences</h2>
-                <div class="settings-item">
-                    <label for="email-notif">Email Notifications:</label>
-                    <select id="email-notif" name="email-notif">
-                        <option value="enabled">Enabled</option>
-                        <option value="disabled">Disabled</option>
-                    </select>
-                </div>
-                <div class="settings-item">
-                    <label for="sms-notif">SMS Notifications:</label>
-                    <select id="sms-notif" name="sms-notif">
-                        <option value="enabled">Enabled</option>
-                        <option value="disabled">Disabled</option>
-                    </select>
-                </div>
-            </section>
-
-            <!-- Account Management Section -->
-            <section class="settings-section">
-                <h2>Account Management</h2>
-                <div class="settings-item">
-                    <label for="deactivate">Deactivate Account:</label>
-                    <button id="deactivate">Deactivate</button>
-                </div>
-                <div class="settings-item">
-                    <label for="delete">Delete Account:</label>
-                    <button id="delete">Delete</button>
-                </div>
-            </section>
+        <div class="page-header fade-up fade-up-d1">
+            <h1><span>Settings</span></h1>
+            <p>Manage your account preferences and security</p>
         </div>
 
-        <!-- Bottom Navigation Bar -->
-        <nav class="bottom-navbar">
-            <a href="{% url 'dashboard' %}" class="nav-link">
-                <i class="fas fa-home"></i>
-                <span>Home</span>
-            </a>
-            <a href="{% url 'setting' %}" class="nav-link">
-                <i class="fas fa-wallet"></i>
-                <span>Accounts</span>
-            </a>
-            <a href="{% url 'bank' %}" class="nav-link">
-                <i class="fas fa-exchange-alt"></i>
-                <span>Transfer</span>
-            </a>
+        <!-- ── Profile Information ── -->
+        <div class="glass-card fade-up fade-up-d1">
+            <div class="section-title">
+                <i class="fas fa-user-circle"></i> Profile Information
+            </div>
+            <div class="settings-item">
+                <span class="label">Username</span>
+                <span class="value">{{ request.user }}</span>
+            </div>
+            <div class="settings-item">
+                <span class="label">Email</span>
+                <span class="value">{{ request.user.email }}</span>
+            </div>
+            <div class="settings-item">
+                <span class="label">First Name</span>
+                <span class="value">{{ user_profile.first_name }}</span>
+            </div>
+            <div class="settings-item">
+                <span class="label">Middle Name</span>
+                <span class="value">{{ user_profile.middle_name }}</span>
+            </div>
+            <div class="settings-item">
+                <span class="label">Last Name</span>
+                <span class="value">{{ user_profile.last_name }}</span>
+            </div>
+            <div class="settings-item">
+                <span class="label">Mobile Number</span>
+                <span class="value">{{ user_profile.phone_number }}</span>
+            </div>
+            <div class="settings-item">
+                <span class="label">Date of Birth</span>
+                <span class="value">{{ user_profile.date_of_birth }}</span>
+            </div>
+            <div class="settings-item">
+                <span class="label">Employment Status</span>
+                <span class="value">{{ user_profile.status }}</span>
+            </div>
+            <div class="settings-item">
+                <span class="label">Country</span>
+                <span class="value">{{ user_profile.country }}</span>
+            </div>
+            <div class="settings-item">
+                <span class="label">Currency</span>
+                <span class="value">{{ user_profile.currency }}</span>
+            </div>
+            <div class="settings-item">
+                <span class="label">Gender</span>
+                <span class="value">{{ user_profile.Gender }}</span>
+            </div>
+            <div class="settings-item">
+                <span class="label">Account Type</span>
+                <span class="value">{{ user_profile.account_type }}</span>
+            </div>
+        </div>
 
-            <a href="{% url 'setting' %}" class="nav-link">
-                <i class="fas fa-user"></i>
-                <span>Profile</span>
-            </a>
-        </nav>
+        <!-- ── Security Settings ── -->
+        <div class="glass-card fade-up fade-up-d2">
+            <div class="section-title">
+                <i class="fas fa-shield-alt"></i> Security Settings
+            </div>
+            <div class="settings-item">
+                <span class="label">Profile Reset</span>
+                <span class="value"><a href="{% url 'reset_profile' %}">Reset Profile →</a></span>
+            </div>
+            <div class="settings-item">
+                <span class="label">Two-Factor Authentication</span>
+                <select id="2fa" name="2fa">
+                    <option value="enabled">Enabled</option>
+                    <option value="disabled">Disabled</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- ── Notification Preferences ── -->
+        <div class="glass-card fade-up fade-up-d3">
+            <div class="section-title">
+                <i class="fas fa-bell"></i> Notification Preferences
+            </div>
+            <div class="settings-item">
+                <span class="label">Email Notifications</span>
+                <select id="email-notif" name="email-notif">
+                    <option value="enabled">Enabled</option>
+                    <option value="disabled">Disabled</option>
+                </select>
+            </div>
+            <div class="settings-item">
+                <span class="label">SMS Notifications</span>
+                <select id="sms-notif" name="sms-notif">
+                    <option value="enabled">Enabled</option>
+                    <option value="disabled">Disabled</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- ── Account Management ── -->
+        <div class="glass-card fade-up fade-up-d4">
+            <div class="section-title">
+                <i class="fas fa-user-cog"></i> Account Management
+            </div>
+            <div class="settings-item">
+                <span class="label">Deactivate Account</span>
+                <button class="btn-action btn-danger" id="deactivate">Deactivate</button>
+            </div>
+            <div class="settings-item">
+                <span class="label">Delete Account</span>
+                <button class="btn-action btn-danger" id="delete">Delete</button>
+            </div>
+        </div>
+
     </div>
 
-    <script>
-        const menuBtn = document.getElementById('menu-btn');
-        const navbarLinks = document.getElementById('navbar-links');
+    <!-- ─── BOTTOM NAV ─── -->
+    <nav class="bottom-nav">
+        <a href="{% url 'dashboard' %}" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="{% url 'setting' %}" class="nav-item active">
+            <i class="fas fa-wallet"></i>
+            <span>Accounts</span>
+        </a>
+        <a href="{% url 'bank' %}" class="nav-item">
+            <i class="fas fa-exchange-alt"></i>
+            <span>Transfer</span>
+        </a>
+        <a href="{% url 'setting' %}" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+        </a>
+    </nav>
 
+    <!-- ─── SCRIPTS ─── -->
+    <script>
+        // ─── Navbar toggle ───
+        const menuBtn = document.getElementById('menuBtn');
+        const navbarLinks = document.getElementById('navbarLinks');
         menuBtn.addEventListener('click', () => {
             navbarLinks.style.display = navbarLinks.style.display === 'flex' ? 'none' : 'flex';
         });
-        document.getElementById("telegramBtn").addEventListener("click", function() {
-            window.open("https://t.me/CUSTOMER_SUPPORT_1485", "_blank");
+
+        // ─── Telegram button ───
+        document.querySelector('.telegram-float')?.addEventListener('click', function(e) {
+            window.open('https://t.me/CUSTOMER_SUPPORT_1485', '_blank');
+        });
+
+        // ─── Auto-dismiss messages ───
+        document.addEventListener('DOMContentLoaded', function() {
+            const messages = document.querySelectorAll('.message');
+            messages.forEach((msg, index) => {
+                setTimeout(() => {
+                    msg.style.transition = 'opacity 0.5s';
+                    msg.style.opacity = '0';
+                    setTimeout(() => { msg.remove(); }, 500);
+                }, 5000 + (index * 500));
+            });
         });
     </script>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- ─── SMARTSUPP LIVE CHAT ─── (replaces Tawk.to) -->
+    <script type="text/javascript">
+        var _smartsupp = _smartsupp || {};
+        _smartsupp.key = '00b4f1c5f7c49d68712cef0a5448484bcce83492';
+        window.smartsupp || (function(d) {
+            var s, c, o = smartsupp = function() { o._.push(arguments); };
+            o._ = [];
+            s = d.getElementsByTagName('script')[0];
+            c = d.createElement('script');
+            c.type = 'text/javascript';
+            c.charset = 'utf-8';
+            c.async = true;
+            c.src = 'https://www.smartsuppchat.com/loader.js?';
+            s.parentNode.insertBefore(c, s);
+        })(document);
+    </script>
+    <noscript>Powered by <a href="https://www.smartsupp.com" target="_blank">Smartsupp</a></noscript>
+
 </body>
-</html>
+    </html>
