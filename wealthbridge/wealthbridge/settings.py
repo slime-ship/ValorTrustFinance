@@ -167,7 +167,6 @@ if not DEBUG:
 
 
 
-BASE_DIR = Path(__file__).resolve().parent.parent
 MEDIA_URL = '/media/'
 
 # Additional locations of static files
