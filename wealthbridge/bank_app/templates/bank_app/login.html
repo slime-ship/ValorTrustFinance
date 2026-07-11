@@ -2,230 +2,460 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> Nova trust finance - Login</title>
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/6a09f6a0e57a6a1c342a5445/1jorempt4';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<style>
-:root {
-    --primary-color: #1ecbe1;
-    --secondary-color: #004080;
-    --rare-color: lightblue;
-    --container-bg-color: #fdfdfd;
-}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login • Nova Trust Finance</title>
 
+    <!-- Tawk.to Script -->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {},
+            Tawk_LoadStart = new Date();
+        (function() {
+            var s1 = document.createElement("script"),
+                s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/6a09f6a0e57a6a1c342a5445/1jorempt4';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
 
-/* Telegram Icon */
-.telegram-icon {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    background-color: #0088cc;
-    color: white;
-    font-size: 30px;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    text-decoration: none;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease-in-out;
-}
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
 
-.telegram-icon:hover {
-    transform: scale(1.1);
-}
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #132b45;
-    background-size: cover;
-    background-position: center;
-    background-repeat:no-repeat;
-    background-image: url("/static/images/bg.jpg");
-    height: 100vh;
-    overflow: hidden;
-}
-form {
-    display: flex;
-    margin-top: 10rem;
-    justify-content: center;
-    align-items: center;
-}
-.login-container {
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);/* White background with 80% opacity */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
-    animation: bounceIn 1s ease-in-out; /* Larger shadow for a more pronounced effect */
-    max-width: 400px;
-    width: 100%;
-    text-align: center;
-    animation: fadeIn 1s ease-in-out;
-    position: relative; /* Ensure relative positioning for absolute elements */
-}
-.login-container h1 {
-    color: #333; /* Changed to a darker color for better contrast */
-    margin-bottom: 20px;
-}
-.input-group {
-    margin-bottom: 15px;
-    position: relative;
-}
-.input-group input {
-    width: calc(100% - 22px); /* Adjusted width to fit properly */
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-.input-group input:focus {
-    outline: none;
-    border-color: #2994ff;
-}
-@media (max-width: 600px) {
-    .input-group .fa {
-        left: 310px;
-    }
-}
-.input-group .fa {
-    position: absolute;
-    left: 290px;
-    top: calc(50% - 7px);
-    color: #2994ff;
-}
-.login-btn {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #003366;
-    color: #ffffff;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-.login-btn:hover {
-    background-color: #2994ff;
-}
-.login-footer {
-    margin-top: 20px;
-    color: #777;
-}
-.login-footer a {
-    color: #2994ff;
-    text-decoration: none;
-}
-.login-footer a:hover {
-    text-decoration: underline;
-}
-/* Applying animation to each message */
-.messages li {
-    animation: slideIn 0.5s ease forwards;
-    animation-delay: calc(0.1s * var(--index)); /* Delay each message */
-}
-/* Optional: Different classes for different message tags */
-.success {
-    background-color: #28a745;
-    color: white;
-}
-.error {
-    background-color: #dc3545;
-    color: white;
-}
-.info {
-    background-color: #17a2b8;
-    color: white;
-}
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-.translate-icon-container {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    z-index: 1000; /* Ensure it's above other content */
-}
-.translate-icon {
-    width: 40px;
-    height: 40px;
-    background-image: url('path_to_google_translate_icon.png');
-    background-size: cover;
-    cursor: pointer;
-}
-@keyframes bounce {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(-10px);
-    }
-}
-.profile-img {
-    width: 5rem;
-    height: 5rem;
-    border: 3px solid #000e17;
-    border-radius: 50%;
-    position: relative;
-}
-</style>
+    <style>
+        /* ───────── RESET & BASE ───────── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+            background: #0b0e1a;
+            background: radial-gradient(ellipse at 20% 50%, #141b3a 0%, #070a14 100%);
+            padding: 1.5rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* ───────── ANIMATED BACKGROUND ORBS ───────── */
+        .bg-orbs {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .bg-orbs span {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.20;
+            animation: orbFloat 25s ease-in-out infinite alternate;
+        }
+        .bg-orbs .orb1 {
+            width: 600px;
+            height: 600px;
+            background: #2d4bff;
+            top: -200px;
+            left: -200px;
+            animation-duration: 18s;
+        }
+        .bg-orbs .orb2 {
+            width: 500px;
+            height: 500px;
+            background: #00b8d4;
+            bottom: -150px;
+            right: -150px;
+            animation-duration: 22s;
+            animation-delay: 2s;
+        }
+        .bg-orbs .orb3 {
+            width: 300px;
+            height: 300px;
+            background: #7c4dff;
+            top: 40%;
+            left: 60%;
+            animation-duration: 26s;
+            animation-delay: 4s;
+            opacity: 0.12;
+        }
+
+        @keyframes orbFloat {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                transform: translate(80px, -60px) scale(1.2);
+            }
+        }
+
+        /* ───────── TELEGRAM FLOATING BUTTON ───────── */
+        .telegram-float {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            z-index: 999;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0088cc, #006699);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            box-shadow: 0 8px 32px rgba(0, 136, 204, 0.35);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            text-decoration: none;
+            animation: telegramBounce 2.5s infinite;
+        }
+        .telegram-float:hover {
+            transform: scale(1.1) translateY(-3px);
+            color: #fff;
+        }
+        @keyframes telegramBounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        /* ───────── MAIN CARD ───────── */
+        .login-wrapper {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 420px;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(24px) saturate(1.4);
+            -webkit-backdrop-filter: blur(24px) saturate(1.4);
+            border-radius: 32px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.02) inset;
+            padding: 2.5rem 2rem 2.8rem;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.8s ease;
+            opacity: 0;
+            transform: translateY(30px) scale(0.97);
+        }
+        .login-wrapper.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* ───────── HEADER ───────── */
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .login-header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.02em;
+            margin: 0;
+        }
+        .login-header h1 span {
+            background: linear-gradient(135deg, #4a6cf7, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .login-header p {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+        }
+
+        /* ───────── FORM ELEMENTS ───────── */
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+        .form-group label {
+            display: block;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 0.4rem;
+        }
+        .input-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .input-container input {
+            width: 100%;
+            padding: 0.8rem 1rem 0.8rem 2.8rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 14px;
+            color: #fff;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+            transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
+        }
+        .input-container input::placeholder {
+            color: rgba(255, 255, 255, 0.2);
+            font-weight: 300;
+        }
+        .input-container input:focus {
+            border-color: rgba(74, 108, 247, 0.4);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 0 0 4px rgba(74, 108, 247, 0.06);
+        }
+        .input-container .input-icon {
+            position: absolute;
+            left: 1rem;
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 1rem;
+            pointer-events: none;
+            transition: color 0.3s;
+        }
+        .input-container input:focus~.input-icon,
+        .input-container input:focus+.input-icon {
+            color: rgba(74, 108, 247, 0.6);
+        }
+        .toggle-password {
+            position: absolute;
+            right: 1rem;
+            color: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: color 0.3s;
+            font-size: 1rem;
+        }
+        .toggle-password:hover {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* ───────── BUTTON ───────── */
+        .btn-login {
+            width: 100%;
+            padding: 0.9rem;
+            background: linear-gradient(135deg, #4a6cf7, #3b5de7);
+            border: none;
+            border-radius: 14px;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 8px 28px rgba(74, 108, 247, 0.25);
+            margin-top: 0.5rem;
+        }
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(74, 108, 247, 0.35);
+            background: linear-gradient(135deg, #5a7aff, #4a6cf7);
+        }
+        .btn-login:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        /* ───────── LINKS ───────── */
+        .form-links {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.2rem;
+        }
+        .form-links a {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .form-links a:hover {
+            color: #fff;
+        }
+        .form-links .signup-link {
+            color: #4a6cf7;
+            font-weight: 500;
+        }
+        .form-links .signup-link:hover {
+            color: #00d4ff;
+        }
+
+        /* ───────── MESSAGES ───────── */
+        .message-box {
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            display: none;
+            animation: slideMsg 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .message-box.error {
+            display: block;
+            background: rgba(255, 71, 87, 0.08);
+            border: 1px solid rgba(255, 71, 87, 0.12);
+            color: #ff6b7a;
+        }
+        .message-box.success {
+            display: block;
+            background: rgba(0, 212, 255, 0.06);
+            border: 1px solid rgba(0, 212, 255, 0.12);
+            color: #5ee0ff;
+        }
+        .message-box.info {
+            display: block;
+            background: rgba(23, 162, 184, 0.08);
+            border: 1px solid rgba(23, 162, 184, 0.12);
+            color: #6bc8d6;
+        }
+        .message-box ul {
+            margin: 0;
+            padding-left: 1.2rem;
+        }
+        .message-box li {
+            list-style: disc;
+        }
+
+        @keyframes slideMsg {
+            0% {
+                opacity: 0;
+                transform: translateY(-8px) scale(0.96);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* ───────── RESPONSIVE ───────── */
+        @media (max-width: 480px) {
+            .login-wrapper {
+                padding: 2rem 1.5rem 2.2rem;
+                border-radius: 24px;
+            }
+            .login-header h1 {
+                font-size: 1.6rem;
+            }
+            .telegram-float {
+                width: 48px;
+                height: 48px;
+                font-size: 1.3rem;
+                bottom: 1.25rem;
+                left: 1.25rem;
+            }
+        }
+
+        /* ───────── UTILITY ───────── */
+        .hidden {
+            display: none !important;
+        }
+    </style>
 </head>
 <body>
-       <a href="https://t.me/CUSTOMER_SUPPORT_1485" class="telegram-icon" target="_blank">
-        <i class="fab fa-telegram"></i>
-       </a>
 
-<form action="" method="post">
-    {% csrf_token %}
-    <div class="login-container">
-        <h1>Login</h1>
-        <div class="input-group">
-            <input type="text" id="username" name="username" placeholder="Username" required>
-        </div>
-        <div class="input-group">
-            <input type="password" id="password" name="password" placeholder="Password" required>
-        </div>
-        <input class="login-btn" type="submit" value="Login">
-        <div class="login-footer">
-            <p>Don't have an account? <a href="{% url 'loginview' %}">Sign up</a></p>
-        </div>
-        {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-            <li class="{% if message.tags %}{{ message.tags }}{% endif %}" style="--index: {{ forloop.counter }}">
-                {{ message }}
-            </li>
-            {% endfor %}
-        </ul>
-        {% endif %}
+    <!-- ─── BACKGROUND ORBS ─── -->
+    <div class="bg-orbs">
+        <span class="orb1"></span>
+        <span class="orb2"></span>
+        <span class="orb3"></span>
     </div>
-</form>
-<!--Translation icon-->
-<script>
-</script>
+
+    <!-- ─── TELEGRAM FLOAT ─── -->
+    <a href="https://t.me/CUSTOMER_SUPPORT_1485" class="telegram-float" target="_blank" aria-label="Telegram support">
+        <i class="fab fa-telegram"></i>
+    </a>
+
+    <!-- ─── LOGIN CARD ─── -->
+    <div class="login-wrapper" id="loginWrapper">
+        <div class="login-header">
+            <h1>Welcome <span>Back</span></h1>
+            <p>Sign in to your Nova Trust Finance account</p>
+        </div>
+
+        <form method="post" action="">
+            {% csrf_token %}
+
+            <!-- Username -->
+            <div class="form-group">
+                <label for="username">Username</label>
+                <div class="input-container">
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required />
+                    <span class="input-icon"><i class="fas fa-user"></i></span>
+                </div>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="input-container">
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required />
+                    <span class="input-icon"><i class="fas fa-lock"></i></span>
+                    <i class="fas fa-eye toggle-password" data-target="password"></i>
+                </div>
+            </div>
+
+            <!-- Messages -->
+            {% if messages %}
+                <div class="message-box {% if messages.0.tags %}{{ messages.0.tags }}{% endif %}">
+                    <ul>
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+
+            <button type="submit" class="btn-login">Login</button>
+
+            <div class="form-links">
+                <a href="#">Forgot password?</a>
+                <a href="{% url 'loginview' %}" class="signup-link">Sign Up <i class="fas fa-arrow-right ml-1"></i></a>
+            </div>
+        </form>
+    </div>
+
+    <!-- ─── SCRIPTS ─── -->
+    <script>
+        // ─── Show card with fade-in ───
+        document.addEventListener('DOMContentLoaded', function() {
+            const wrapper = document.getElementById('loginWrapper');
+            wrapper.classList.add('visible');
+        });
+
+        // ─── Password toggle ───
+        document.querySelectorAll('.toggle-password').forEach(function(icon) {
+            icon.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('data-target');
+                const input = document.getElementById(targetId);
+                if (!input) return;
+                const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+                input.setAttribute('type', type);
+                this.classList.toggle('fa-eye');
+                this.classList.toggle('fa-eye-slash');
+            });
+        });
+
+        // ─── Auto-dismiss messages after 6s ───
+        const msgBox = document.querySelector('.message-box');
+        if (msgBox) {
+            setTimeout(function() {
+                msgBox.style.transition = 'opacity 0.5s';
+                msgBox.style.opacity = '0';
+                setTimeout(function() {
+                    msgBox.style.display = 'none';
+                }, 500);
+            }, 6000);
+        }
+    </script>
 </body>
-  </html>
+</html>
