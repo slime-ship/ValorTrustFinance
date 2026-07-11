@@ -122,7 +122,7 @@
             }
         }
 
-        /* ───────── SIDEBAR OVERLAY ───────── */
+        /* ───────── SIDEBAR ───────── */
         .sidebar-overlay {
             position: fixed;
             inset: 0;
@@ -135,7 +135,6 @@
             display: block;
         }
 
-        /* ───────── SIDEBAR ───────── */
         .sidebar-modern {
             position: fixed;
             top: 0;
@@ -498,6 +497,81 @@
             border-left: 3px solid #00d4ff;
         }
 
+        /* ───────── TRANSACTION CARD ───────── */
+        .transaction-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.7rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .transaction-item:last-child {
+            border-bottom: none;
+        }
+        .transaction-item .tx-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-right: 0.8rem;
+        }
+        .transaction-item .tx-icon.credit {
+            background: rgba(0, 212, 255, 0.1);
+            color: #5ee0ff;
+        }
+        .transaction-item .tx-icon.debit {
+            background: rgba(255, 71, 87, 0.1);
+            color: #ff6b7a;
+        }
+        .transaction-item .tx-info {
+            flex: 1;
+        }
+        .transaction-item .tx-info .tx-desc {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #fff;
+        }
+        .transaction-item .tx-info .tx-date {
+            font-size: 0.65rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+        .transaction-item .tx-amount {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .transaction-item .tx-amount.credit {
+            color: #5ee0ff;
+        }
+        .transaction-item .tx-amount.debit {
+            color: #ff6b7a;
+        }
+        .tx-empty {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.2);
+            padding: 1.5rem 0;
+        }
+        .tx-empty i {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+            color: rgba(255, 255, 255, 0.05);
+        }
+        .view-all-link {
+            display: inline-block;
+            margin-top: 0.8rem;
+            color: #4a6cf7;
+            font-weight: 500;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .view-all-link:hover {
+            color: #00d4ff;
+        }
+
         /* ───────── BOTTOM NAV ───────── */
         .bottom-nav {
             position: fixed;
@@ -553,6 +627,10 @@
             animation-delay: 0.1s;
             opacity: 0;
         }
+        .fade-up-d3 {
+            animation-delay: 0.15s;
+            opacity: 0;
+        }
 
         /* ───────── RESPONSIVE ───────── */
         @media (max-width: 600px) {
@@ -601,6 +679,10 @@
                 width: 260px;
                 left: -260px;
             }
+            .transaction-item {
+                flex-wrap: wrap;
+                gap: 0.3rem;
+            }
         }
         @media (max-width: 400px) {
             .payment-grid {
@@ -648,8 +730,19 @@
             <p>Email: <strong>{{ user_profile.email }}</strong></p>
         </div>
         <ul class="nav-list">
+            <li><a href="{% url 'dashboard' %}"><i class="fas fa-home mr-2"></i>Dashboard</a></li>
             <li><a href="{% url 'setting' %}"><i class="fas fa-user mr-2"></i>Profile</a></li>
             <li><a href="{% url 'reset_profile' %}"><i class="fas fa-cog mr-2"></i>Settings</a></li>
+            <li><a href="{% url 'transaction' %}"><i class="fas fa-list-ul mr-2"></i>Transactions</a></li>
+            <li><a href="{% url 'bank' %}"><i class="fas fa-university mr-2"></i>Bank Transfer</a></li>
+            <li><a href="{% url 'crypto' %}"><i class="fas fa-coins mr-2"></i>Crypto Transfer</a></li>
+            <li><a href="{% url 'paypal' %}"><i class="fab fa-paypal mr-2"></i>PayPal</a></li>
+            <li><a href="{% url 'skrill' %}"><i class="fas fa-money-bill-wave mr-2"></i>Skrill</a></li>
+            <li><a href="{% url 'G_cash' %}"><i class="fas fa-mobile-alt mr-2"></i>GCash</a></li>
+            <li><a href="{% url 'trust_wise' %}"><i class="fas fa-globe mr-2"></i>Wise</a></li>
+            <li><a href="{% url 'western_union' %}"><i class="fas fa-hand-holding-usd mr-2"></i>Western Union</a></li>
+            <li><a href="{% url 'payoneer' %}"><i class="fas fa-building mr-2"></i>Payoneer</a></li>
+            <li><a href="{% url 'loans' %}"><i class="fas fa-hand-holding-usd mr-2"></i>Loans</a></li>
             <li><a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt mr-2"></i>Logout</a></li>
         </ul>
     </div>
@@ -664,10 +757,19 @@
             <i class="fas fa-bell"></i>
         </div>
         <div class="navbar-links" id="navbarLinks">
-            <a href="{% url 'dashboard' %}"><i class="fas fa-home mr-2"></i>Home</a>
-            <a href="{% url 'setting' %}"><i class="fas fa-cog mr-2"></i>Accounts</a>
+            <a href="{% url 'dashboard' %}"><i class="fas fa-home mr-2"></i>Dashboard</a>
+            <a href="{% url 'setting' %}"><i class="fas fa-user mr-2"></i>Profile</a>
+            <a href="{% url 'reset_profile' %}"><i class="fas fa-cog mr-2"></i>Settings</a>
             <a href="{% url 'transaction' %}"><i class="fas fa-list-ul mr-2"></i>Transactions</a>
-            <a href="{% url 'reset_profile' %}"><i class="fas fa-user-edit mr-2"></i>Settings</a>
+            <a href="{% url 'bank' %}"><i class="fas fa-university mr-2"></i>Bank Transfer</a>
+            <a href="{% url 'crypto' %}"><i class="fas fa-coins mr-2"></i>Crypto</a>
+            <a href="{% url 'paypal' %}"><i class="fab fa-paypal mr-2"></i>PayPal</a>
+            <a href="{% url 'skrill' %}"><i class="fas fa-money-bill-wave mr-2"></i>Skrill</a>
+            <a href="{% url 'G_cash' %}"><i class="fas fa-mobile-alt mr-2"></i>GCash</a>
+            <a href="{% url 'trust_wise' %}"><i class="fas fa-globe mr-2"></i>Wise</a>
+            <a href="{% url 'western_union' %}"><i class="fas fa-hand-holding-usd mr-2"></i>Western Union</a>
+            <a href="{% url 'payoneer' %}"><i class="fas fa-building mr-2"></i>Payoneer</a>
+            <a href="{% url 'loans' %}"><i class="fas fa-hand-holding-usd mr-2"></i>Loans</a>
             <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt mr-2"></i>Logout</a>
         </div>
     </nav>
@@ -705,7 +807,6 @@
             <!-- Payment Options - SVG Icons -->
             <div style="margin-top: 1.2rem;">
                 <div class="payment-grid">
-                    <!-- Bank -->
                     <a href="{% url 'bank' %}" class="payment-item">
                         <div class="icon-box">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -715,7 +816,6 @@
                         <span class="label">Bank</span>
                     </a>
 
-                    <!-- Crypto -->
                     <a href="{% url 'crypto' %}" class="payment-item">
                         <div class="icon-box">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -726,7 +826,6 @@
                         <span class="label">Crypto</span>
                     </a>
 
-                    <!-- PayPal -->
                     <a href="{% url 'paypal' %}" class="payment-item">
                         <div class="icon-box">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -736,7 +835,6 @@
                         <span class="label">PayPal</span>
                     </a>
 
-                    <!-- Skrill -->
                     <a href="{% url 'skrill' %}" class="payment-item">
                         <div class="icon-box">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -748,7 +846,6 @@
                         <span class="label">Skrill</span>
                     </a>
 
-                    <!-- GCash -->
                     <a href="{% url 'G_cash' %}" class="payment-item">
                         <div class="icon-box">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -760,7 +857,6 @@
                         <span class="label">GCash</span>
                     </a>
 
-                    <!-- Wise -->
                     <a href="{% url 'trust_wise' %}" class="payment-item">
                         <div class="icon-box">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -770,7 +866,6 @@
                         <span class="label">Wise</span>
                     </a>
 
-                    <!-- Western Union -->
                     <a href="{% url 'western_union' %}" class="payment-item">
                         <div class="icon-box">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -780,7 +875,6 @@
                         <span class="label">W. Union</span>
                     </a>
 
-                    <!-- Payoneer -->
                     <a href="{% url 'payoneer' %}" class="payment-item">
                         <div class="icon-box">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -811,6 +905,41 @@
             </div>
         </div>
 
+        <!-- ── Dynamic Transaction Card ── -->
+        <div class="glass-card fade-up fade-up-d3">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                <h5 style="font-weight: 600; color: #fff; margin: 0;">Recent Transactions</h5>
+                <span style="font-size: 0.7rem; color: rgba(255,255,255,0.3);">{{ transactions|length }} records</span>
+            </div>
+
+            <div>
+                {% if transactions %}
+                    {% for transaction in transactions|slice:":5" %}
+                        <div class="transaction-item">
+                            <div style="display: flex; align-items: center; flex: 1;">
+                                <div class="tx-icon {% if transaction.description == 'Credit' %}credit{% else %}debit{% endif %}">
+                                    <i class="fas {% if transaction.description == 'Credit' %}fa-arrow-down{% else %}fa-arrow-up{% endif %}"></i>
+                                </div>
+                                <div class="tx-info">
+                                    <div class="tx-desc">{{ transaction.description }}</div>
+                                    <div class="tx-date">{{ transaction.timestamp|date:"M d, Y H:i" }}</div>
+                                </div>
+                            </div>
+                            <div class="tx-amount {% if transaction.description == 'Credit' %}credit{% else %}debit{% endif %}">
+                                {{ user_profile.currency }}{{ transaction.amount }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <a href="{% url 'transaction' %}" class="view-all-link">View All Transactions <i class="fas fa-arrow-right ml-1"></i></a>
+                {% else %}
+                    <div class="tx-empty">
+                        <i class="fas fa-receipt"></i>
+                        No transactions yet
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
     </div>
 
     <!-- ─── BOTTOM NAV ─── -->
@@ -823,7 +952,7 @@
             <i class="fas fa-exchange-alt"></i>
             <span>Transfer</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="{% url 'transaction' %}" class="nav-item">
             <i class="fas fa-chart-line"></i>
             <span>Overview</span>
         </a>
@@ -876,6 +1005,12 @@
             }
         }
         fetchIP();
+
+        // ─── Navbar links toggle ───
+        document.querySelector('.nav-icons .fa-bell')?.addEventListener('click', function() {
+            const links = document.getElementById('navbarLinks');
+            links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+        });
     </script>
 
     <!-- Bootstrap 5 JS Bundle -->
