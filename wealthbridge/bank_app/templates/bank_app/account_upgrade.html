@@ -4,152 +4,443 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{% static 'img/favicon.ico' %}" rel="icon">
-     <!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/6a09f6a0e57a6a1c342a5445/1jorempt4';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
-     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <title>Upgrade Account • Nova Trust Finance</title>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>Upgrade Account</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link href="{% static 'img/favicon.ico' %}" rel="icon">
+
     <style>
+        /* ───────── RESET & BASE ───────── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background: linear-gradient(135deg, #0061a8, #06A3DA);
-            font-family: 'Nunito', sans-serif;
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            background: #0b0e1a;
+            background: radial-gradient(ellipse at 20% 50%, #141b3a 0%, #070a14 100%);
+            padding: 1.5rem;
+            position: relative;
+            overflow-x: hidden;
         }
-        .navbar {
-            background-color: #004080;
-        }
-        .navbar-brand {
-            font-weight: 700;
-        }
-        .upgrade-container {
-            max-width: 600px;
-            margin: 50px auto;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-        }
-        .upgrade-container h2 {
-            color: #004080;
-            font-weight: 700;
-        }
-        .form-group label {
-            font-weight: 600;
-        }
-        .form-group input, .form-group select {
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-        .submit-btn {
-            background-color: #004080;
-            color: #fff;
-            font-weight: 600;
-            border-radius: 5px;
-            padding: 10px 20px;
-            border: none;
-        }
-        .submit-btn:hover {
-            background-color: #002952;
-        }
-        .success-popup {
+
+        /* ───────── ANIMATED BACKGROUND ORBS ───────── */
+        .bg-orbs {
             position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            display: none;
-            padding: 20px;
-            text-align: center;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
         }
-        .success-popup.show {
-            display: block;
-        }
-        .popup-content h2 {
-            font-weight: 700;
-            color: #004080;
-        }
-        .close-popup {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #444;
+        .bg-orbs span {
             position: absolute;
-            top: 10px;
-            right: 10px;
-        }
-        .info-note {
-            background-color: #f8d7da;
-            color: #721c24;
-            padding: 10px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            border: 1px solid #f5c6cb;
-        }
-        .telegram-icon {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            width: 60px;
-            height: 60px;
-            background-color: #0088cc;
             border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.20;
+            animation: orbFloat 25s ease-in-out infinite alternate;
+        }
+        .bg-orbs .orb1 {
+            width: 600px;
+            height: 600px;
+            background: #2d4bff;
+            top: -200px;
+            left: -200px;
+            animation-duration: 18s;
+        }
+        .bg-orbs .orb2 {
+            width: 500px;
+            height: 500px;
+            background: #00b8d4;
+            bottom: -150px;
+            right: -150px;
+            animation-duration: 22s;
+            animation-delay: 2s;
+        }
+        .bg-orbs .orb3 {
+            width: 300px;
+            height: 300px;
+            background: #7c4dff;
+            top: 40%;
+            left: 60%;
+            animation-duration: 26s;
+            animation-delay: 4s;
+            opacity: 0.12;
+        }
+
+        @keyframes orbFloat {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                transform: translate(80px, -60px) scale(1.2);
+            }
+        }
+
+        /* ───────── TELEGRAM FLOATING BUTTON ───────── */
+        .telegram-float {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            z-index: 999;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0088cc, #006699);
+            color: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-            cursor: pointer;
-            animation: bounce 2s infinite;
-            transition: transform 0.3s;
+            font-size: 1.6rem;
+            box-shadow: 0 8px 32px rgba(0, 136, 204, 0.35);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            text-decoration: none;
+            animation: telegramBounce 2.5s infinite;
         }
-
-        .telegram-icon:hover {
-            transform: scale(1.1);
+        .telegram-float:hover {
+            transform: scale(1.1) translateY(-3px);
+            color: #fff;
         }
-
-        @keyframes bounce {
+        @keyframes telegramBounce {
             0%, 100% {
                 transform: translateY(0);
             }
             50% {
-                transform: translateY(-10px);
+                transform: translateY(-8px);
             }
         }
 
-        .telegram-icon img {
-            width: 35px;
-            height: 35px;
+        /* ───────── NAVBAR ───────── */
+        .navbar-modern {
+            position: relative;
+            z-index: 10;
+            background: rgba(11, 14, 26, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 0.8rem 1rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+        }
+        .navbar-modern .navbar-brand {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #fff;
+            letter-spacing: -0.02em;
+        }
+        .navbar-modern .navbar-brand span {
+            background: linear-gradient(135deg, #4a6cf7, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .navbar-modern .nav-link {
+            color: rgba(255, 255, 255, 0.6) !important;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .navbar-modern .nav-link:hover {
+            color: #fff !important;
+        }
+        .navbar-modern .navbar-toggler {
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+        .navbar-modern .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,255,255,0.6)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        /* ───────── MAIN CARD ───────── */
+        .upgrade-wrapper {
+            position: relative;
+            z-index: 1;
+            max-width: 640px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(24px) saturate(1.4);
+            -webkit-backdrop-filter: blur(24px) saturate(1.4);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 32px;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.02) inset;
+            padding: 2.5rem 2rem 2.8rem;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.8s ease;
+            opacity: 0;
+            transform: translateY(30px) scale(0.97);
+        }
+        .upgrade-wrapper.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* ───────── HEADER ───────── */
+        .upgrade-header {
+            margin-bottom: 1.8rem;
+            text-align: center;
+        }
+        .upgrade-header h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.02em;
+            margin: 0;
+        }
+        .upgrade-header h2 span {
+            background: linear-gradient(135deg, #4a6cf7, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .upgrade-header p {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+        }
+
+        /* ───────── INFO NOTE ───────── */
+        .info-note {
+            background: rgba(255, 185, 0, 0.06);
+            border: 1px solid rgba(255, 185, 0, 0.1);
+            border-radius: 14px;
+            padding: 0.8rem 1rem;
+            margin-bottom: 1.5rem;
+            color: #ffb900;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .info-note i {
+            font-size: 1.2rem;
+            color: #ffb900;
+        }
+        .info-note strong {
+            font-weight: 600;
+        }
+
+        /* ───────── FORM ELEMENTS ───────── */
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        .form-group label {
+            display: block;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        .input-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .input-container .input-icon {
+            position: absolute;
+            left: 1rem;
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 1rem;
+            pointer-events: none;
+            transition: color 0.3s;
+            z-index: 2;
+        }
+        .input-container input,
+        .input-container select {
+            width: 100%;
+            padding: 0.8rem 1rem 0.8rem 2.8rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 14px;
+            color: #fff;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+            transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+        .input-container select option {
+            background: #1a1f30;
+            color: #fff;
+        }
+        .input-container input::placeholder {
+            color: rgba(255, 255, 255, 0.2);
+            font-weight: 300;
+        }
+        .input-container input:focus,
+        .input-container select:focus {
+            border-color: rgba(74, 108, 247, 0.4);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 0 0 4px rgba(74, 108, 247, 0.06);
+        }
+        .input-container input:focus~.input-icon,
+        .input-container select:focus~.input-icon {
+            color: rgba(74, 108, 247, 0.6);
+        }
+
+        /* ───────── FILE INPUT ───────── */
+        .file-upload-wrapper {
+            position: relative;
+        }
+        .file-upload-wrapper input[type="file"] {
+            padding: 0.8rem 1rem 0.8rem 2.8rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 14px;
+            color: #fff;
+            width: 100%;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.3s, background 0.3s;
+            cursor: pointer;
+        }
+        .file-upload-wrapper input[type="file"]::file-selector-button {
+            background: rgba(74, 108, 247, 0.15);
+            border: none;
+            border-radius: 8px;
+            padding: 0.3rem 1rem;
+            color: #fff;
+            margin-right: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .file-upload-wrapper input[type="file"]::file-selector-button:hover {
+            background: rgba(74, 108, 247, 0.25);
+        }
+        .file-upload-wrapper .input-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.2);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* ───────── BUTTON ───────── */
+        .btn-submit {
+            width: 100%;
+            padding: 0.9rem;
+            background: linear-gradient(135deg, #4a6cf7, #3b5de7);
+            border: none;
+            border-radius: 14px;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 8px 28px rgba(74, 108, 247, 0.25);
+            margin-top: 0.5rem;
+        }
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(74, 108, 247, 0.35);
+            background: linear-gradient(135deg, #5a7aff, #4a6cf7);
+        }
+        .btn-submit:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        /* ───────── MESSAGES ───────── */
+        .alert-custom {
+            border-radius: 14px;
+            padding: 0.8rem 1rem;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            background: rgba(255, 71, 87, 0.06);
+            color: #ff6b7a;
+            margin-bottom: 1rem;
+        }
+        .alert-custom ul {
+            margin: 0;
+            padding-left: 1.2rem;
+        }
+
+        /* ───────── RESPONSIVE ───────── */
+        @media (max-width: 600px) {
+            .upgrade-wrapper {
+                padding: 1.8rem 1.2rem 2rem;
+                border-radius: 24px;
+            }
+            .upgrade-header h2 {
+                font-size: 1.4rem;
+            }
+            .telegram-float {
+                width: 48px;
+                height: 48px;
+                font-size: 1.3rem;
+                bottom: 1.25rem;
+                left: 1.25rem;
+            }
+        }
+
+        /* ───────── ANIMATIONS ───────── */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .fade-up {
+            animation: fadeUp 0.6s ease forwards;
+        }
+        .fade-up-d1 {
+            animation-delay: 0.05s;
+            opacity: 0;
+        }
+        .fade-up-d2 {
+            animation-delay: 0.1s;
+            opacity: 0;
+        }
+        .fade-up-d3 {
+            animation-delay: 0.15s;
+            opacity: 0;
+        }
+        .fade-up-d4 {
+            animation-delay: 0.2s;
+            opacity: 0;
+        }
+        .fade-up-d5 {
+            animation-delay: 0.25s;
+            opacity: 0;
         }
     </style>
 </head>
 <body>
-    <div class="telegram-icon" id="telegramBtn">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+
+    <!-- ─── BACKGROUND ORBS ─── -->
+    <div class="bg-orbs">
+        <span class="orb1"></span>
+        <span class="orb2"></span>
+        <span class="orb3"></span>
     </div>
 
-    <nav class="navbar navbar-expand-md navbar-dark">
-        <div class="container">
-            <a href="/" class="navbar-brand"> Nova trust finance</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav">
+    <!-- ─── TELEGRAM FLOAT ─── -->
+    <a href="https://t.me/CUSTOMER_SUPPORT_1485" class="telegram-float" target="_blank" aria-label="Telegram support">
+        <i class="fab fa-telegram"></i>
+    </a>
+
+    <!-- ─── NAVBAR ─── -->
+    <nav class="navbar navbar-expand-md navbar-modern">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Nova <span>Trust</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-end" id="main-nav">
+            <div class="collapse navbar-collapse justify-content-end" id="mainNav">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="{% url 'setting' %}">Profile</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'reset_profile' %}">Settings</a></li>
@@ -159,102 +450,159 @@ s0.parentNode.insertBefore(s1,s0);
         </div>
     </nav>
 
-    <div class="upgrade-container">
-        <h2>Upgrade Your Account</h2>
-        <p>Please provide your credentials to complete the upgrade process.</p>
+    <!-- ─── MAIN CONTENT ─── -->
+    <div class="upgrade-wrapper" id="upgradeWrapper">
 
-        <!-- Info Note -->
-        <div class="info-note">
-            <p><strong>Important:</strong> The card details must be purchased in order to upgrade your account and unlock withdrawal features.</p>
+        <div class="upgrade-header fade-up fade-up-d1">
+            <h2>Upgrade <span>Account</span></h2>
+            <p>Complete your credentials to unlock withdrawal features</p>
         </div>
 
-        <!-- Error or Success Messages -->
+        <!-- Info Note -->
+        <div class="info-note fade-up fade-up-d1">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span><strong>Important:</strong> Card details must be purchased to upgrade your account and unlock withdrawal features.</span>
+        </div>
+
+        <!-- Error Messages -->
         {% if messages %}
-            <div class="alert alert-danger" role="alert">
-                {% for message in messages %}
-                    <p>{{ message }}</p>
-                {% endfor %}
+            <div class="alert-custom fade-up fade-up-d1">
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
             </div>
         {% endif %}
 
+        <!-- Form -->
         <form id="upgradeForm" action="{% url 'Upgrade_Account' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
 
             <!-- Mobile Bank Card Number -->
-            <div class="form-group mb-3">
-                <label for="card-number">Mobile Bank Card Number:</label>
-                <input type="text" id="card-number" name="card_number" class="form-control" required>
+            <div class="form-group fade-up fade-up-d2">
+                <label for="card-number">Mobile Bank Card Number</label>
+                <div class="input-container">
+                    <input type="text" id="card-number" name="card_number" placeholder="Enter card number" required>
+                    <span class="input-icon"><i class="fas fa-credit-card"></i></span>
+                </div>
             </div>
 
             <!-- CVV -->
-            <div class="form-group mb-3">
-                <label for="cvv">CVV:</label>
-                <input type="text" id="cvv" name="cvv" class="form-control" required>
+            <div class="form-group fade-up fade-up-d2">
+                <label for="cvv">CVV</label>
+                <div class="input-container">
+                    <input type="text" id="cvv" name="cvv" placeholder="Enter CVV" required>
+                    <span class="input-icon"><i class="fas fa-lock"></i></span>
+                </div>
             </div>
 
-<!-- Expiration Date (Month and Year) -->
-<div class="form-group mb-3">
-    <label for="expiry-month">Expiration Date:</label>
-    <div class="d-flex gap-2">
-        <select id="expiry-month" name="expiry_month" class="form-select" required>
-            <option value="" disabled selected>Month</option>
-            {% for month in months %}
-                <option value="{{ month }}">{{ month }}</option>
-            {% endfor %}
-        </select>
-        <select id="expiry-year" name="expiry_year" class="form-select" required>
-            <option value="" disabled selected>Year</option>
-            {% for year in years %}
-                <option value="{{ year }}">{{ year }}</option>
-            {% endfor %}
-        </select>
-    </div>
-</div>
-
-<!-- Hidden field for the combined expiry date -->
-<input type="hidden" id="expiry_date" name="expiry_date" required>
-
+            <!-- Expiration Date -->
+            <div class="form-group fade-up fade-up-d3">
+                <label>Expiration Date</label>
+                <div class="row g-2">
+                    <div class="col-6">
+                        <div class="input-container">
+                            <select id="expiry-month" name="expiry_month" class="form-select" required>
+                                <option value="" disabled selected>Month</option>
+                                {% for month in months %}
+                                    <option value="{{ month }}">{{ month }}</option>
+                                {% endfor %}
+                            </select>
+                            <span class="input-icon"><i class="fas fa-calendar-alt"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="input-container">
+                            <select id="expiry-year" name="expiry_year" class="form-select" required>
+                                <option value="" disabled selected>Year</option>
+                                {% for year in years %}
+                                    <option value="{{ year }}">{{ year }}</option>
+                                {% endfor %}
+                            </select>
+                            <span class="input-icon"><i class="fas fa-calendar-alt"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" id="expiry_date" name="expiry_date" required>
+            </div>
 
             <!-- Document Type -->
-            <div class="form-group mb-3">
-                <label for="document-type">Document Type:</label>
-                <select id="document-type" name="document_type" class="form-select" required>
-                    <option value="" disabled selected>Select document type</option>
-                    <option value="driver_license">Driver License</option>
-                    <option value="electric_bill">Electric Bill</option>
-                    <option value="bank_document">Bank Document</option>
-                </select>
+            <div class="form-group fade-up fade-up-d4">
+                <label for="document-type">Document Type</label>
+                <div class="input-container">
+                    <select id="document-type" name="document_type" class="form-select" required>
+                        <option value="" disabled selected>Select document type</option>
+                        <option value="driver_license">Driver License</option>
+                        <option value="electric_bill">Electric Bill</option>
+                        <option value="bank_document">Bank Document</option>
+                    </select>
+                    <span class="input-icon"><i class="fas fa-file-alt"></i></span>
+                </div>
             </div>
 
             <!-- Document Upload -->
-            <div class="form-group mb-3">
-                <label for="document-upload">Upload Document:</label>
-                <input type="file" id="document-upload" name="document_upload" class="form-control" accept=".pdf,.jpg,.jpeg,.png" required>
+            <div class="form-group fade-up fade-up-d5">
+                <label for="document-upload">Upload Document</label>
+                <div class="file-upload-wrapper">
+                    <input type="file" id="document-upload" name="document_upload" accept=".pdf,.jpg,.jpeg,.png" required>
+                    <span class="input-icon"><i class="fas fa-cloud-upload-alt"></i></span>
+                </div>
             </div>
 
-            <!-- Submit Button -->
-            <button type="submit" class="submit-btn w-100">Submit</button>
+            <!-- Submit -->
+            <button type="submit" class="btn-submit fade-up fade-up-d5">
+                <i class="fas fa-arrow-right mr-2"></i> Submit Upgrade
+            </button>
         </form>
-
     </div>
-<script>
-    document.querySelector('form').addEventListener('submit', function(event) {
-    var expiryMonth = document.getElementById('expiry-month').value;
-    var expiryYear = document.getElementById('expiry-year').value;
 
-    if (expiryMonth && expiryYear) {
-        // Combine the month and year in MM/YYYY format
-        document.getElementById('expiry_date').value = expiryMonth + '/' + expiryYear;
-    } else {
-        // If the month or year is not selected, prevent form submission
-        event.preventDefault();
-        alert("Please select both month and year for expiration date.");
-    }
-});
-document.getElementById("telegramBtn").addEventListener("click", function() {
-            window.open("https://t.me/CUSTOMER_SUPPORT_1485");
+    <!-- ─── SCRIPTS ─── -->
+    <script>
+        // ─── Show card with fade-in ───
+        document.addEventListener('DOMContentLoaded', function() {
+            const wrapper = document.getElementById('upgradeWrapper');
+            wrapper.classList.add('visible');
         });
-</script>
+
+        // ─── Combine expiry month/year ───
+        document.querySelector('form').addEventListener('submit', function(event) {
+            const month = document.getElementById('expiry-month').value;
+            const year = document.getElementById('expiry-year').value;
+            if (month && year) {
+                document.getElementById('expiry_date').value = month + '/' + year;
+            } else {
+                event.preventDefault();
+                alert('Please select both month and year for expiration date.');
+            }
+        });
+
+        // ─── Telegram button ───
+        document.querySelector('.telegram-float')?.addEventListener('click', function(e) {
+            window.open('https://t.me/CUSTOMER_SUPPORT_1485', '_blank');
+        });
+    </script>
+
+    <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- ─── SMARTSUPP LIVE CHAT ─── (replaces Tawk.to) -->
+    <script type="text/javascript">
+        var _smartsupp = _smartsupp || {};
+        _smartsupp.key = '00b4f1c5f7c49d68712cef0a5448484bcce83492';
+        window.smartsupp || (function(d) {
+            var s, c, o = smartsupp = function() { o._.push(arguments); };
+            o._ = [];
+            s = d.getElementsByTagName('script')[0];
+            c = d.createElement('script');
+            c.type = 'text/javascript';
+            c.charset = 'utf-8';
+            c.async = true;
+            c.src = 'https://www.smartsuppchat.com/loader.js?';
+            s.parentNode.insertBefore(c, s);
+        })(document);
+    </script>
+    <noscript>Powered by <a href="https://www.smartsupp.com" target="_blank">Smartsupp</a></noscript>
+
 </body>
 </html>
