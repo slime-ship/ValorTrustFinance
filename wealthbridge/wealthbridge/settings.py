@@ -33,10 +33,15 @@ cloudinary.config(
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',   # if BASE_DIR is defined (should be)
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres.iyshvrfiiaizdveunhft',
+        'PASSWORD': 'Prm36WFz47ZAtwdt',
+        'HOST': 'aws-1-eu-west-2.pooler.supabase.com',
+        'PORT': '6543',  # PgBouncer port
+        'CONN_MAX_AGE': 0,  # Required for PgBouncer compatibility
     }
-} 
+}
 
 
 # Quick-start development settings - unsuitable for production
